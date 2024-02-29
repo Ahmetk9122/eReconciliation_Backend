@@ -1,0 +1,14 @@
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/bin/Debug/net7.0/eReconciliation.Core.deps.json
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/bin/Debug/net7.0/eReconciliation.Core.runtimeconfig.json
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/bin/Debug/net7.0/eReconciliation.Core.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/bin/Debug/net7.0/eReconciliation.Core.pdb
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/obj/Debug/net7.0/eReconciliation.Core.csproj.AssemblyReference.cache
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/obj/Debug/net7.0/eReconciliation.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/obj/Debug/net7.0/eReconciliation.Core.AssemblyInfoInputs.cache
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/obj/Debug/net7.0/eReconciliation.Core.AssemblyInfo.cs
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/obj/Debug/net7.0/eReconciliation.Core.csproj.CoreCompileInputs.cache
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/obj/Debug/net7.0/eReconciliation.Core.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/obj/Debug/net7.0/refint/eReconciliation.Core.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/obj/Debug/net7.0/eReconciliation.Core.pdb
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/obj/Debug/net7.0/eReconciliation.Core.genruntimeconfig.cache
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/obj/Debug/net7.0/ref/eReconciliation.Core.dll

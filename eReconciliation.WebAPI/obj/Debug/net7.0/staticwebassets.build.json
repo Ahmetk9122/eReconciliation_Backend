@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "7yq88l568RIe1nidRVnp51yV916w+a33ToDvdD6dleQ=",
+  "Source": "eReconciliation.WebAPI",
+  "BasePath": "_content/eReconciliation.WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

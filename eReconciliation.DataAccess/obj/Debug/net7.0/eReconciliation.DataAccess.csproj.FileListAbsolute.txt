@@ -1,0 +1,17 @@
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.DataAccess/bin/Debug/net7.0/eReconciliation.DataAccess.deps.json
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.DataAccess/bin/Debug/net7.0/eReconciliation.DataAccess.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.DataAccess/bin/Debug/net7.0/eReconciliation.DataAccess.pdb
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.DataAccess/bin/Debug/net7.0/eReconciliation.Core.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.DataAccess/bin/Debug/net7.0/eReconciliation.Entities.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.DataAccess/bin/Debug/net7.0/eReconciliation.Entities.pdb
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.DataAccess/bin/Debug/net7.0/eReconciliation.Core.pdb
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.DataAccess/obj/Debug/net7.0/eReconciliation.DataAccess.csproj.AssemblyReference.cache
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.DataAccess/obj/Debug/net7.0/eReconciliation.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.DataAccess/obj/Debug/net7.0/eReconciliation.DataAccess.AssemblyInfoInputs.cache
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.DataAccess/obj/Debug/net7.0/eReconciliation.DataAccess.AssemblyInfo.cs
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.DataAccess/obj/Debug/net7.0/eReconciliation.DataAccess.csproj.CoreCompileInputs.cache
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.DataAccess/obj/Debug/net7.0/eReconciliation.DataAccess.csproj.CopyComplete
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.DataAccess/obj/Debug/net7.0/eReconciliation.DataAccess.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.DataAccess/obj/Debug/net7.0/refint/eReconciliation.DataAccess.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.DataAccess/obj/Debug/net7.0/eReconciliation.DataAccess.pdb
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.DataAccess/obj/Debug/net7.0/ref/eReconciliation.DataAccess.dll

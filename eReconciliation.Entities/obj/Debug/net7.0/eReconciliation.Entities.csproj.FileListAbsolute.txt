@@ -1,0 +1,15 @@
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/bin/Debug/net7.0/eReconciliation.Entities.deps.json
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/bin/Debug/net7.0/eReconciliation.Entities.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/bin/Debug/net7.0/eReconciliation.Entities.pdb
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/bin/Debug/net7.0/eReconciliation.Core.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/bin/Debug/net7.0/eReconciliation.Core.pdb
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/obj/Debug/net7.0/eReconciliation.Entities.csproj.AssemblyReference.cache
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/obj/Debug/net7.0/eReconciliation.Entities.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/obj/Debug/net7.0/eReconciliation.Entities.AssemblyInfoInputs.cache
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/obj/Debug/net7.0/eReconciliation.Entities.AssemblyInfo.cs
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/obj/Debug/net7.0/eReconciliation.Entities.csproj.CoreCompileInputs.cache
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/obj/Debug/net7.0/eReconciliation.Entities.csproj.CopyComplete
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/obj/Debug/net7.0/eReconciliation.Entities.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/obj/Debug/net7.0/refint/eReconciliation.Entities.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/obj/Debug/net7.0/eReconciliation.Entities.pdb
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/obj/Debug/net7.0/ref/eReconciliation.Entities.dll
