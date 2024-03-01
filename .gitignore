@@ -53,3 +53,10 @@ msbuild.wrn
 .history/*
 
 temp_smb.conf
+
+*.suo
+*.user
+_ReSharper.*
+bin
+obj
+packages
