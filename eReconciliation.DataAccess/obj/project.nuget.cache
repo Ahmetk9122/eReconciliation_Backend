@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cs5xKOeyxXS3vDTv572NOgO3LJh7sVMCtF7h18OB0ZW63nnW1k+0dwpxuKjEai+tzLh+p2bJgi9gqjV7emgFRg==",
+  "dgSpecHash": "+5Nboj2UXbux65WBo3XuSoE6na2RgnXtfVbxGPEhNPhomdXfZvGjFIPm5iuCHrsZa0kQ+Hb9oklWgQAHyc+wHQ==",
   "success": true,
   "projectFilePath": "/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.DataAccess/eReconciliation.DataAccess.csproj",
   "expectedPackageFiles": [
@@ -47,7 +47,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Newtonsoft.Json 6.0.6' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "message": "'Newtonsoft.Json 6.0.6' paketi, proje hedef çerçevesi 'net7.0' yerine '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' kullanılarak geri yüklendi. Bu paket projenizle tamamen uyumlu olmayabilir.",
       "libraryId": "Newtonsoft.Json",
       "targetGraphs": [
         "net7.0"
@@ -57,7 +57,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'System.IdentityModel.Tokens 5.0.0-rc1-211161024' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "message": "'System.IdentityModel.Tokens 5.0.0-rc1-211161024' paketi, proje hedef çerçevesi 'net7.0' yerine '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' kullanılarak geri yüklendi. Bu paket projenizle tamamen uyumlu olmayabilir.",
       "libraryId": "System.IdentityModel.Tokens",
       "targetGraphs": [
         "net7.0"
