@@ -365,6 +365,10 @@
       },
       "eReconciliation.DataAccess/1.0.0": {
         "dependencies": {
+          "Microsoft.EntityFrameworkCore": "7.0.16",
+          "Microsoft.EntityFrameworkCore.Design": "7.0.16",
+          "Microsoft.EntityFrameworkCore.Tools": "7.0.16",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.11",
           "eReconciliation.Entities": "1.0.0"
         },
         "runtime": {

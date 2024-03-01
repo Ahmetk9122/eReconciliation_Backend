@@ -8,6 +8,7 @@
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/obj/Debug/net7.0/eReconciliation.Entities.AssemblyInfoInputs.cache
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/obj/Debug/net7.0/eReconciliation.Entities.AssemblyInfo.cs
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/obj/Debug/net7.0/eReconciliation.Entities.csproj.CoreCompileInputs.cache
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/obj/Debug/net7.0/eReconciliation.Entities.sourcelink.json
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/obj/Debug/net7.0/eReconciliation.Entities.csproj.CopyComplete
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/obj/Debug/net7.0/eReconciliation.Entities.dll
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/obj/Debug/net7.0/refint/eReconciliation.Entities.dll

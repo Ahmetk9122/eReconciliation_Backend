@@ -7,6 +7,7 @@
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/obj/Debug/net7.0/eReconciliation.Core.AssemblyInfoInputs.cache
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/obj/Debug/net7.0/eReconciliation.Core.AssemblyInfo.cs
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/obj/Debug/net7.0/eReconciliation.Core.csproj.CoreCompileInputs.cache
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/obj/Debug/net7.0/eReconciliation.Core.sourcelink.json
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/obj/Debug/net7.0/eReconciliation.Core.dll
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/obj/Debug/net7.0/refint/eReconciliation.Core.dll
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/obj/Debug/net7.0/eReconciliation.Core.pdb

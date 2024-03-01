@@ -6,8 +6,11 @@
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/eReconciliation.WebAPI.dll
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/eReconciliation.WebAPI.pdb
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/Autofac.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/Autofac.Extensions.DependencyInjection.dll
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/AutoMapper.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/Humanizer.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/Microsoft.AspNetCore.OpenApi.dll
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.dll
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -18,6 +21,8 @@
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/Microsoft.IdentityModel.Abstractions.dll
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/Microsoft.IdentityModel.JsonWebTokens.dll
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/Microsoft.IdentityModel.Logging.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/Microsoft.IdentityModel.Tokens.dll
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/Microsoft.OpenApi.dll
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/Mono.TextTemplating.dll
@@ -45,6 +50,7 @@
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/obj/Debug/net7.0/eReconciliation.WebAPI.csproj.CoreCompileInputs.cache
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/obj/Debug/net7.0/eReconciliation.WebAPI.MvcApplicationPartsAssemblyInfo.cs
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/obj/Debug/net7.0/eReconciliation.WebAPI.MvcApplicationPartsAssemblyInfo.cache
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/obj/Debug/net7.0/eReconciliation.WebAPI.sourcelink.json
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/obj/Debug/net7.0/staticwebassets.build.json
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/obj/Debug/net7.0/staticwebassets.development.json
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/obj/Debug/net7.0/staticwebassets/msbuild.eReconciliation.WebAPI.Microsoft.AspNetCore.StaticWebAssets.props

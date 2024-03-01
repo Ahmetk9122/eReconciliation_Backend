@@ -1,12 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "gHK6Weqn/3lRl1J0EIgaKXQLpMuq6YocGVfXltnImRrzQyI0Pj3BXXr5cIXIPRltHIZM4YYH6NteuGTaqoUI7g==",
+  "dgSpecHash": "J6Eyel+/j+KTKpQH/0LtjoSS7q1XPVQbRWo+ox2Yx2eb4yvsgdOxu43g9ZxBxbwmzerQjyx5KvQEOF/uDXM9JA==",
   "success": true,
   "projectFilePath": "/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/eReconciliation.WebAPI.csproj",
   "expectedPackageFiles": [
     "/Users/ahmetkarabudak/.nuget/packages/autofac/7.1.0/autofac.7.1.0.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/autofac.extensions.dependencyinjection/7.2.0/autofac.extensions.dependencyinjection.7.2.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/7.0.16/microsoft.aspnetcore.authentication.jwtbearer.7.0.16.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/microsoft.aspnetcore.openapi/7.0.14/microsoft.aspnetcore.openapi.7.0.14.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/microsoft.entityframeworkcore/7.0.16/microsoft.entityframeworkcore.7.0.16.nupkg.sha512",
@@ -30,6 +33,8 @@
     "/Users/ahmetkarabudak/.nuget/packages/microsoft.identitymodel.abstractions/7.4.0/microsoft.identitymodel.abstractions.7.4.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/microsoft.identitymodel.jsonwebtokens/7.4.0/microsoft.identitymodel.jsonwebtokens.7.4.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/microsoft.identitymodel.logging/7.4.0/microsoft.identitymodel.logging.7.4.0.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/microsoft.identitymodel.protocols/6.35.0/microsoft.identitymodel.protocols.6.35.0.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/6.35.0/microsoft.identitymodel.protocols.openidconnect.6.35.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/microsoft.identitymodel.tokens/7.4.0/microsoft.identitymodel.tokens.7.4.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
@@ -58,7 +63,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Newtonsoft.Json 6.0.6' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "message": "'Newtonsoft.Json 6.0.6' paketi, proje hedef çerçevesi 'net7.0' yerine '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' kullanılarak geri yüklendi. Bu paket projenizle tamamen uyumlu olmayabilir.",
       "libraryId": "Newtonsoft.Json",
       "targetGraphs": [
         "net7.0"
@@ -68,7 +73,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'System.IdentityModel.Tokens 5.0.0-rc1-211161024' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "message": "'System.IdentityModel.Tokens 5.0.0-rc1-211161024' paketi, proje hedef çerçevesi 'net7.0' yerine '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' kullanılarak geri yüklendi. Bu paket projenizle tamamen uyumlu olmayabilir.",
       "libraryId": "System.IdentityModel.Tokens",
       "targetGraphs": [
         "net7.0"
