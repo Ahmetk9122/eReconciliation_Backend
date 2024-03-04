@@ -5,3 +5,9 @@ docker postgresql container created
 dotnet ef migrations add init --project ../eReconciliation.DataAccess/eReconciliation.DataAccess.csproj
 
 dotnet ef database update --project ../eReconciliation.DataAccess/eReconciliation.DataAccess.csproj
+
+
+
+
+Result DataResul oluşturma Core Katmanında Utilities yapılır ve responseları biçimlendirmeye yarar.
+başarılı, başarısız, data

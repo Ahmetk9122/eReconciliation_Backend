@@ -1,15 +1,30 @@
+
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using eReconciliation.Business.DependencyResolver.Autofac;
+using eReconciliation.Business.DependencyResolver;
+
 var builder = WebApplication.CreateBuilder(args);
+var services = builder.Services;
 
-// Add services to the container.
+// #region [ AutoMapper ]
+// builder.Services.AddAutoMapper(typeof(DomainProfile));
+// #endregion
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+#region  [AUTOFAC]
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new AutofacBusinessModule()));
+#endregion
+
+
+services.AddControllers();
+
+services.AddEndpointsApiExplorer();
+services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
