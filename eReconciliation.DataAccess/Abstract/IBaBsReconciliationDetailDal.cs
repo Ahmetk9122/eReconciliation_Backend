@@ -3,7 +3,7 @@ using eReconciliation.Entities.Concrete;
 
 namespace eReconciliation.DataAccess
 {
-    public interface IBaBsReconciliationDal : IEntityRepository<BaBsReconciliation>
+    public interface IBaBsReconciliationDetailDal : IEntityRepository<BaBsReconciliationDetail>
     {
 
     }
