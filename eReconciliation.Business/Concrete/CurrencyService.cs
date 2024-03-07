@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using eReconciliation.DataAccess;
 
-namespace eReconciliation.Business.Concrete
+namespace eReconciliation.Business
 {
     public class CurrencyService : ICurrencyService
     {
