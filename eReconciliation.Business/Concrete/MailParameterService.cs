@@ -6,7 +6,7 @@ using eReconciliation.DataAccess;
 
 namespace eReconciliation.Business
 {
-    public class MailParameterService
+    public class MailParameterService : IMailParameterService
     {
         private readonly IMailParameterDal _mailParameterDal;
 

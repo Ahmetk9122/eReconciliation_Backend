@@ -21,6 +21,7 @@ namespace eReconciliation.Business
 
         public IResult Add(Company company)
         {
+            if (!((company.Name?.Length ?? 0) > 10)) throw new Exception("Şirket Adı En Az 10 Karakter olmalıdır.");
             _companyDal.Add(company);
             return new SuccessResult(Messages.AddedCompany);
         }
