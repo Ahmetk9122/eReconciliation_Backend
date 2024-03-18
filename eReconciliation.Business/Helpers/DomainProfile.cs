@@ -1,0 +1,22 @@
+using AutoMapper;
+using eReconciliation.Entities;
+using eReconciliation.Entities.Concrete;
+using eReconciliation.Entities.Dtos;
+
+namespace eReconciliation.Business
+{
+    public class DomainProfile : Profile
+    {
+        public DomainProfile()
+        {
+            CreateMap<MailParameter, MailParameterDto>();
+            CreateMap<MailParameterDto, MailParameter>();
+
+            CreateMap<UserForRegister, UserForRegisterDto>();
+            CreateMap<UserForRegisterDto, UserForRegister>();
+
+            CreateMap<UserForLogin, UserForLoginDto>();
+            CreateMap<UserForLoginDto, UserForLogin>();
+        }
+    }
+}

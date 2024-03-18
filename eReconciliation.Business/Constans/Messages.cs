@@ -12,5 +12,7 @@ namespace eReconciliation.Business.Constans
         public static string UserNotFound = "Kullanıcı bulunamadı";
         public static string PasswordError = "Parola Hatalı";
         public static string SuccessfulLogin = "Giriş Başarılı";
+        public static string UserRegistered = "Kullanıcı Kaydedildi.";
+        public static string UserExist = "Bu kullanıcı zaten var.";
     }
 }
