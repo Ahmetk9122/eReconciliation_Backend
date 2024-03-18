@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "ywWu2gQbvbEqvYla/NXTyTALWjWjkfrA13ZW3EEhOxO/e/nUg7Z6Q2LTdAT7yTQ2nO1AkITPEWPhfGcGN3MEQg==",
+  "dgSpecHash": "sAd9HNnlCxOfXXxvqsnGOYb3SG+26fJhMALhxcLWcz0OJoDPV8jTPRJh4Dq03r7AAFoLkht3x0ha5hLrIVT37A==",
   "success": true,
   "projectFilePath": "/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Entities/eReconciliation.Entities.csproj",
   "expectedPackageFiles": [
+    "/Users/ahmetkarabudak/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/microsoft.entityframeworkcore/7.0.16/microsoft.entityframeworkcore.7.0.16.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/microsoft.entityframeworkcore.abstractions/7.0.16/microsoft.entityframeworkcore.abstractions.7.0.16.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/microsoft.entityframeworkcore.analyzers/7.0.16/microsoft.entityframeworkcore.analyzers.7.0.16.nupkg.sha512",

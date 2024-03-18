@@ -3,9 +3,19 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using eReconciliation.Business.DependencyResolver.Autofac;
 using eReconciliation.Business.DependencyResolver;
+using eReconciliation.Core.Utilities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using eReconciliation.Core.Extensions;
+using AutoMapper;
+using eReconciliation.Business;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
+
+#region [ AutoMapper ]
+services.AddAutoMapper(typeof(DomainProfile));
+#endregion
 
 // #region [ AutoMapper ]
 // builder.Services.AddAutoMapper(typeof(DomainProfile));
@@ -16,20 +26,48 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new AutofacBusinessModule()));
 #endregion
 
-
 services.AddControllers();
+#region  [JWT]
+IConfiguration configuration = builder.Configuration;
+
+builder.Services.AddCors(opt =>
+{
+    ///Dışardan apiyle veya istekle hangi sitelerden gelebileceğini sorguluyorç
+    opt.AddPolicy("AllowOrigin",
+    builder => builder.WithOrigins("https://localhost:7129"));
+
+});
+
+var tokenOptions = configuration.GetSection("TokenOptions").Get<TokenOptions>();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = false,
+        ValidIssuer = tokenOptions.Issuer,
+        ValidAudience = tokenOptions.Audience,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey),
+    };
+});
+
+#endregion
 
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
 var app = builder.Build();
 
+MappingExtensions.Configure(app.Services.GetService<IMapper>());
 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors(builder => builder.WithOrigins("https://localhost:7129").AllowAnyHeader());
 
 app.UseHttpsRedirection();
 
