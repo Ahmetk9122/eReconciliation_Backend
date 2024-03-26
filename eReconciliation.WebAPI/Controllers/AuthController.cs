@@ -34,14 +34,14 @@ namespace eReconciliation.WebAPI.Controllers
             var companyExist = _authService.CompanyExist(userAndCompanyRegisteredDto.Company);
             if (!companyExist.Success)
             {
-                return BadRequest(userExist.Message);
+                return BadRequest(companyExist.Message);
             }
 
             var registerResult = _authService.Register(userAndCompanyRegisteredDto.UserForRegisterDto.ConvertTo<UserForRegister>(), userAndCompanyRegisteredDto.UserForRegisterDto.Password, userAndCompanyRegisteredDto.Company);
             var result = _authService.CreateAccessToken(registerResult.Data, registerResult.Data.CompanyId);
             if (result.Success)
             {
-                return Ok(registerResult);
+                return Ok(result.Data);
             }
             return BadRequest(registerResult.Message);
         }

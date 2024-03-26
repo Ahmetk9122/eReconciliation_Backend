@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Threading.Tasks;
+using System.Transactions;
 using eReconciliation.Business.Constans;
 using eReconciliation.Core;
 using eReconciliation.Core.Entities.Concrete;
@@ -29,10 +30,6 @@ namespace eReconciliation.Business.Concrete
 
         }
 
-        public IResult CompanyExist(Company company)
-        {
-            return _companyService.CompanyExists(company);
-        }
 
         public IDataResult<AccessToken> CreateAccessToken(User user, int companyId)
         {
@@ -59,52 +56,54 @@ namespace eReconciliation.Business.Concrete
 
         public IDataResult<UserCompanyDto> Register(UserForRegister userForRegister, string password, Company company)
         {
-            #region [ Kullanıcı Kayıdı ]
-            byte[] passwordHash, passwordSalt;
-            HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
-            var user = new User()
+            using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
             {
-                Email = userForRegister.Email,
-                AddedAt = DateTime.Now,
-                IsActive = true,
-                MailConfirm = false,
-                MailConfirmDate = DateTime.Now,
-                MailConfirmValue = Guid.NewGuid().ToString(),
-                PasswordHash = passwordHash,
-                PasswordSalt = passwordSalt,
-                Name = userForRegister.Name
-            };
-            _userService.Add(user);
-            #endregion
+                #region [ Kullanıcı Kayıdı ]
+                byte[] passwordHash, passwordSalt;
+                HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+                var user = new User()
+                {
+                    Email = userForRegister.Email,
+                    AddedAt = DateTime.Now,
+                    IsActive = true,
+                    MailConfirm = false,
+                    MailConfirmDate = DateTime.Now,
+                    MailConfirmValue = Guid.NewGuid().ToString(),
+                    PasswordHash = passwordHash,
+                    PasswordSalt = passwordSalt,
+                    Name = userForRegister.Name
+                };
+                _userService.Add(user);
+                #endregion
 
-            #region [ Şirket Kayıdı ]
+                #region [ Şirket Kayıdı ]
 
-            _companyService.Add(company);
+                _companyService.Add(company);
 
-            #endregion
+                #endregion
 
-            #region [ Kullanıcı Şirket Mapping Kayıdı ]
+                #region [ Kullanıcı Şirket Mapping Kayıdı ]
 
-            _companyService.UserCompanyMapingAdd(user.Id, company.Id);
+                _companyService.UserCompanyMapingAdd(user.Id, company.Id);
 
-            #endregion
-
-            UserCompanyDto userCompanyDto = new UserCompanyDto()
-            {
-                Id = user.Id,
-                Name = user.Name,
-                Email = user.Email,
-                AddedAt = user.AddedAt,
-                CompanyId = company.Id,
-                IsActive = true,
-                MailConfirm = user.MailConfirm,
-                MailConfirmDate = user.MailConfirmDate,
-                MailConfirmValue = user.MailConfirmValue,
-                PasswordHash = user.PasswordHash,
-                PasswordSalt = user.PasswordSalt
-            };
-
-            return new SuccessDataResult<UserCompanyDto>(userCompanyDto, Messages.UserRegistered);
+                #endregion
+                UserCompanyDto userCompanyDto = new UserCompanyDto()
+                {
+                    Id = user.Id,
+                    Name = user.Name,
+                    Email = user.Email,
+                    AddedAt = user.AddedAt,
+                    CompanyId = company.Id,
+                    IsActive = true,
+                    MailConfirm = user.MailConfirm,
+                    MailConfirmDate = user.MailConfirmDate,
+                    MailConfirmValue = user.MailConfirmValue,
+                    PasswordHash = user.PasswordHash,
+                    PasswordSalt = user.PasswordSalt
+                };
+                scope.Complete();
+                return new SuccessDataResult<UserCompanyDto>(userCompanyDto, Messages.UserRegistered);
+            }
         }
 
         public IDataResult<User> RegisterSecondAccount(UserForRegister userForRegister, string password)
@@ -131,6 +130,15 @@ namespace eReconciliation.Business.Concrete
         {
             if (_userService.GetByMail(email) != null)
                 return new ErrorResult(Messages.UserExist);
+            return new SuccessResult();
+        }
+        public IResult CompanyExist(Company company)
+        {
+            var result = _companyService.CompanyExists(company);
+            if (result.Success == false)
+            {
+                return new ErrorResult(Messages.CompanyAlreadyExist);
+            }
             return new SuccessResult();
         }
 
