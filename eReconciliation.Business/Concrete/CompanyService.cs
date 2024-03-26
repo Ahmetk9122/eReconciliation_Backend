@@ -26,6 +26,20 @@ namespace eReconciliation.Business
             return new SuccessResult(Messages.AddedCompany);
         }
 
+        public IResult CompanyExists(Company company)
+        {
+            var result = _companyDal.Get(x => x.Name == company.Name && x.TaxDepartment == company.TaxDepartment && x.TaxIdNumber == company.TaxIdNumber && x.IdentityNumber == x.IdentityNumber);
+            if (result != null)
+                return new ErrorResult(Messages.CompanyAlreadyExist);
+            return new SuccessResult();
+        }
+
+        public IResult UserCompanyMapingAdd(int userId, int companyId)
+        {
+            _companyDal.UserCompanyMapingAdd(userId, companyId);
+            return new SuccessResult();
+        }
+
         /// <summary>
         /// Business katmanı amacı
         /// Kullanıcı yetkileri

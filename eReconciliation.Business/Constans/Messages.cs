@@ -14,5 +14,6 @@ namespace eReconciliation.Business.Constans
         public static string SuccessfulLogin = "Giriş Başarılı";
         public static string UserRegistered = "Kullanıcı Kaydedildi.";
         public static string UserExist = "Bu kullanıcı zaten var.";
+        public static string CompanyAlreadyExist = "Bu şirket daha önce kaydedilmiş";
     }
 }
