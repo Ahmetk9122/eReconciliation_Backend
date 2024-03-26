@@ -18,6 +18,7 @@ namespace eReconciliation.DataAccess
                     IsActive = true,
                 };
                 context.UserCompanies.Add(userCompany);
+                context.SaveChanges();
             }
         }
     }
