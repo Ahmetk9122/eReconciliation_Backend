@@ -8,6 +8,22 @@ project.lock.json
 nupkg/
 .vs/
 
+
+*.cache
+*.dll
+*.exe
+*.pdb
+/build/
+*.sdf
+*.opensdf
+*.tlog
+*.log
+TestResult.xml
+*.VisualState.xml
+Version.cs
+Version.h
+Version.cpp
+
 *.gz
 *.tar
 
@@ -41,6 +57,7 @@ bld/
 msbuild.log
 msbuild.err
 msbuild.wrn
+
 
 
 # for vscode
