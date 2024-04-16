@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using System.Transactions;
+using eReconciliation.Business.Abstract;
 using eReconciliation.Business.Constans;
 using eReconciliation.Core;
 using eReconciliation.Core.Entities.Concrete;
@@ -21,11 +22,15 @@ namespace eReconciliation.Business.Concrete
         private readonly IUserService _userService;
         private readonly ITokenHelper _tokenHelper;
         private readonly ICompanyService _companyService;
+        private readonly IMailParameterService _mailParameterService;
+        private readonly IMailService _mailService;
 
-        public AuthService(IUserService userService, ITokenHelper tokenHelper, ICompanyService companyService)
+        public AuthService(IUserService userService, ITokenHelper tokenHelper, ICompanyService companyService, IMailParameterService mailParameterService, IMailService mailService)
         {
             _tokenHelper = tokenHelper;
             _companyService = companyService;
+            _mailParameterService = mailParameterService;
+            _mailService = mailService;
             _userService = userService;
 
         }
@@ -87,6 +92,7 @@ namespace eReconciliation.Business.Concrete
                 _companyService.UserCompanyMapingAdd(user.Id, company.Id);
 
                 #endregion
+
                 UserCompanyDto userCompanyDto = new UserCompanyDto()
                 {
                     Id = user.Id,
@@ -101,7 +107,22 @@ namespace eReconciliation.Business.Concrete
                     PasswordHash = user.PasswordHash,
                     PasswordSalt = user.PasswordSalt
                 };
+
+
+                var mailParameter = _mailParameterService.GetMailParameter(10);
+                var sendMail = new SendMailDto()
+                {
+                    MailParameter = mailParameter.Data,
+                    Email = user.Email,
+                    Subject = "Kullanıcı Onay Maili",
+                    Body = "Kullanıcınız sisteme kayıt oldu kaydınızı tamamlamak için aşşağıdaki linke tıklayınız."
+                };
+                _mailService.SendMail(sendMail);
+
                 scope.Complete();
+
+
+
                 return new SuccessDataResult<UserCompanyDto>(userCompanyDto, Messages.UserRegistered);
             }
         }

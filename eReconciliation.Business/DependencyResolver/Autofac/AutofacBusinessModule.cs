@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
+using eReconciliation.Business.Abstract;
 using eReconciliation.Business.Concrete;
 using eReconciliation.Core.Utilities;
 using eReconciliation.DataAccess;
+using eReconciliation.DataAccess.Abstract;
+using eReconciliation.DataAccess.Concrete.EntityFramework;
 
 namespace eReconciliation.Business.DependencyResolver.Autofac
 {
@@ -42,6 +45,10 @@ namespace eReconciliation.Business.DependencyResolver.Autofac
 
             builder.RegisterType<AuthService>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+
+            builder.RegisterType<MailService>().As<IMailService>();
+            builder.RegisterType<EfMailDal>().As<IMailDal>();
+
 
         }
     }

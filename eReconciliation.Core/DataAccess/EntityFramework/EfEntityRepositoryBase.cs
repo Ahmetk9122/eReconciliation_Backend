@@ -61,5 +61,15 @@ namespace eReconciliation.Core.DataAccess.EntityFramework
                 return context.Set<TEntity>().SingleOrDefault(filter);
             }
         }
+
+        public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter)
+        {
+            using (var context = new TContext())
+            {
+                var resultContext = context.Set<TEntity>();
+                return await resultContext.SingleOrDefaultAsync(filter);
+            }
+        }
+
     }
 }

@@ -17,6 +17,6 @@ namespace eReconciliation.Core.DataAccess
         //bir sorgu yollayabilirim veya sorgu göndermeden direk liste isteyebilirim.
         List<T> GetList(Expression<Func<T, bool>> filter = null);
         T Get(Expression<Func<T, bool>> filter);
-
+        Task<T> GetAsync(Expression<Func<T, bool>> filter);
     }
 }
