@@ -17,5 +17,8 @@ namespace eReconciliation.Business.Constans
         public static string CompanyAlreadyExist = "Bu şirket daha önce kaydedilmiş";
         public static string MailParameterUpdated = "Mail parametreleri başarıyla güncellendi.";
         public static string MailSendSuccessful = "Mail başarıyla gönderildi.";
+        public static string MailTemplateAdded = "Mail şablonu kaydedildi.";
+        public static string MailTemplateUpdated = "Mail şablonu güncellendi.";
+        public static string MailTemplateDeleted = "Mail şablonu silindi.";
     }
 }
