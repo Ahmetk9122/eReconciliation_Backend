@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using eReconciliation.Core.Entities;
-using eReconciliation.Core.Entities.Concrete;
 
 namespace eReconciliation.Entities.Dtos
 {
-    public class UserCompanyDto : User, IDto
+    public class MailTemplateDto : IDto
     {
         public int CompanyId { get; set; }
+        public string Type { get; set; }
+        public string Value { get; set; }
     }
 }
