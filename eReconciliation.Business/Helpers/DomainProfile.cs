@@ -17,6 +17,10 @@ namespace eReconciliation.Business
 
             CreateMap<UserForLogin, UserForLoginDto>();
             CreateMap<UserForLoginDto, UserForLogin>();
+
+            CreateMap<MailTemplate, MailTemplateDto>();
+            CreateMap<MailTemplateDto, MailTemplate>();
+
         }
     }
 }

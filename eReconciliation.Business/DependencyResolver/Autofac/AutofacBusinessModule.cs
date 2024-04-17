@@ -49,6 +49,8 @@ namespace eReconciliation.Business.DependencyResolver.Autofac
             builder.RegisterType<MailService>().As<IMailService>();
             builder.RegisterType<EfMailDal>().As<IMailDal>();
 
+            builder.RegisterType<MailTemplateService>().As<IMailTemplateService>();
+            builder.RegisterType<EFMailTemplateDal>().As<IMailTemplateDal>();
 
         }
     }
