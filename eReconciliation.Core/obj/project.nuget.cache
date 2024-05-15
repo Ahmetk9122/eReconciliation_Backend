@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "h1bvub5RIOdc8ZW29xM48Po4rrS5+OwYbxWg09QTp0OjJzP8Y2pfZQrPE9NHyFjcO1d6GuIK+uPxB92qv3y+wQ==",
+  "dgSpecHash": "vEOHH8QoZNmKYdThUgRaZkJgXtrLbs8+2WG1yYiXc8ZFflvDNzhrAeb/yt+3ASDjZyzxVhFUYuPIeG5gG9lXqw==",
   "success": true,
   "projectFilePath": "/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Core/eReconciliation.Core.csproj",
   "expectedPackageFiles": [
     "/Users/ahmetkarabudak/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/castle.core/5.1.1/castle.core.5.1.1.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/fluentvalidation/11.9.1/fluentvalidation.11.9.1.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
@@ -34,6 +35,7 @@
     "/Users/ahmetkarabudak/.nuget/packages/npgsql/7.0.6/npgsql.7.0.6.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/npgsql.entityframeworkcore.postgresql/7.0.11/npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/system.codedom/4.4.0/system.codedom.4.4.0.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/system.diagnostics.eventlog/6.0.0/system.diagnostics.eventlog.6.0.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/system.identitymodel.tokens/5.0.0-rc1-211161024/system.identitymodel.tokens.5.0.0-rc1-211161024.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/system.identitymodel.tokens.jwt/7.4.0/system.identitymodel.tokens.jwt.7.4.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/system.text.encodings.web/7.0.0/system.text.encodings.web.7.0.0.nupkg.sha512",

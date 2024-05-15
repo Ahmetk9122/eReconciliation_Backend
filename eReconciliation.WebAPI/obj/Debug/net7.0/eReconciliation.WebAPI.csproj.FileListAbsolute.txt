@@ -66,3 +66,5 @@
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/obj/Debug/net7.0/eReconciliation.WebAPI.genruntimeconfig.cache
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/obj/Debug/net7.0/ref/eReconciliation.WebAPI.dll
 /Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/FluentValidation.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/Castle.Core.dll
+/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/bin/Debug/net7.0/Autofac.Extras.DynamicProxy.dll

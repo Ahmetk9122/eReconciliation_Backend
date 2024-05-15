@@ -1,4 +1,6 @@
 using eReconciliation.Business.Constans;
+using eReconciliation.Business.ValidationRules.FluentValidation;
+using eReconciliation.Core.Aspects.Autofac.Validation;
 using eReconciliation.Core.Utilities.Results.Abstract;
 using eReconciliation.Core.Utilities.Results.Concrete;
 using eReconciliation.DataAccess;
@@ -23,6 +25,7 @@ namespace eReconciliation.Business
             return new SuccessDataResult<UserCompany>(_companyDal.GetCompany(userId));
         }
 
+        [ValidationAspect(typeof(CompanyValidator))]
         public IResult Add(Company company)
         {
             if (!((company.Name?.Length ?? 0) > 4)) throw new Exception("Şirket Adı En Az 10 Karakter olmalıdır.");

@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
+using Autofac.Extras.DynamicProxy;
+using Castle.DynamicProxy;
 using eReconciliation.Business.Abstract;
 using eReconciliation.Business.Concrete;
 using eReconciliation.Core.Utilities;
+using eReconciliation.Core.Utilities.Interceptors;
 using eReconciliation.DataAccess;
 using eReconciliation.DataAccess.Abstract;
 using eReconciliation.DataAccess.Concrete.EntityFramework;
@@ -51,6 +54,14 @@ namespace eReconciliation.Business.DependencyResolver.Autofac
 
             builder.RegisterType<MailTemplateService>().As<IMailTemplateService>();
             builder.RegisterType<EFMailTemplateDal>().As<IMailTemplateDal>();
+
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces().EnableInterfaceInterceptors(new ProxyGenerationOptions()
+            {
+                Selector = new AspectInterceptorSelector()
+            }).SingleInstance();
+
+
 
         }
     }

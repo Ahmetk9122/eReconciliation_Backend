@@ -9,6 +9,7 @@ using eReconciliation.Business.Abstract;
 using eReconciliation.Business.Constans;
 using eReconciliation.Business.ValidationRules.FluentValidation;
 using eReconciliation.Core;
+using eReconciliation.Core.Aspects.Autofac.Transaction;
 using eReconciliation.Core.CrossCuttingConcerns.Validation;
 using eReconciliation.Core.Entities.Concrete;
 using eReconciliation.Core.Utilities;
@@ -73,72 +74,68 @@ namespace eReconciliation.Business.Concrete
 
         }
 
-        // [AbstractValidator(typeof(UserValidator))]
+        [TransactionScopeAspect]
         public IDataResult<UserCompanyDto> Register(UserForRegister userForRegister, string password, Company company)
         {
 
-            using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            #region [ Kullanıcı Kayıdı ]
+            byte[] passwordHash, passwordSalt;
+            HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            var user = new User()
             {
-                #region [ Kullanıcı Kayıdı ]
-                byte[] passwordHash, passwordSalt;
-                HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
-                var user = new User()
-                {
-                    Email = userForRegister.Email,
-                    AddedAt = DateTime.Now,
-                    IsActive = true,
-                    MailConfirm = false,
-                    MailConfirmDate = DateTime.Now,
-                    MailConfirmValue = Guid.NewGuid().ToString(),
-                    PasswordHash = passwordHash,
-                    PasswordSalt = passwordSalt,
-                    Name = userForRegister.Name
-                };
+                Email = userForRegister.Email,
+                AddedAt = DateTime.Now,
+                IsActive = true,
+                MailConfirm = false,
+                MailConfirmDate = DateTime.Now,
+                MailConfirmValue = Guid.NewGuid().ToString(),
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
+                Name = userForRegister.Name
+            };
 
-                #region [ Validation ]
-                ValidationTool.Validate(new UserValidator(), user);
-                ValidationTool.Validate(new CompanyValidator(), company);
-                #endregion
+            // #region [ Validation ]
+            // ValidationTool.Validate(new UserValidator(), user);
+            // ValidationTool.Validate(new CompanyValidator(), company);
+            // #endregion
 
-                _userService.Add(user);
-                #endregion
+            _userService.Add(user);
+            #endregion
 
-                #region [ Şirket Kayıdı ]
+            #region [ Şirket Kayıdı ]
 
-                _companyService.Add(company);
+            _companyService.Add(company);
 
-                #endregion
+            #endregion
 
-                #region [ Kullanıcı Şirket Mapping Kayıdı ]
+            #region [ Kullanıcı Şirket Mapping Kayıdı ]
 
-                _companyService.UserCompanyMapingAdd(user.Id, company.Id);
+            _companyService.UserCompanyMapingAdd(user.Id, company.Id);
 
-                #endregion
+            #endregion
 
-                UserCompanyDto userCompanyDto = new UserCompanyDto()
-                {
-                    Id = user.Id,
-                    Name = user.Name,
-                    Email = user.Email,
-                    AddedAt = user.AddedAt,
-                    CompanyId = company.Id,
-                    IsActive = true,
-                    MailConfirm = user.MailConfirm,
-                    MailConfirmDate = user.MailConfirmDate,
-                    MailConfirmValue = user.MailConfirmValue,
-                    PasswordHash = user.PasswordHash,
-                    PasswordSalt = user.PasswordSalt
-                };
+            UserCompanyDto userCompanyDto = new UserCompanyDto()
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Email = user.Email,
+                AddedAt = user.AddedAt,
+                CompanyId = company.Id,
+                IsActive = true,
+                MailConfirm = user.MailConfirm,
+                MailConfirmDate = user.MailConfirmDate,
+                MailConfirmValue = user.MailConfirmValue,
+                PasswordHash = user.PasswordHash,
+                PasswordSalt = user.PasswordSalt
+            };
 
-                #region [ Send Mail ]
+            #region [ Send Mail ]
 
-                SendConfirmEmail(user);
+            SendConfirmEmail(user);
 
-                #endregion
-                scope.Complete();
+            #endregion
 
-                return new SuccessDataResult<UserCompanyDto>(userCompanyDto, Messages.UserRegistered);
-            }
+            return new SuccessDataResult<UserCompanyDto>(userCompanyDto, Messages.UserRegistered);
         }
         void SendConfirmEmail(User user)
         {

@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "ApAo7mT5Z7rsle9jHDRC0WfNKSdX7nKK0IJHo+Hc9Ol4PN/d1V6fur/uSDL/smtk6ZbdhRT/D2K4ztG6XxN/ag==",
+  "dgSpecHash": "x/ydBAoALvakpQGh9yi88OOF0p15P1stVV7CM60izW/wA5J9YHlBWaa2OwDC/iLRAgjbJF4Sj7Lt6SPB02PELQ==",
   "success": true,
   "projectFilePath": "/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Business/eReconciliation.Business.csproj",
   "expectedPackageFiles": [
     "/Users/ahmetkarabudak/.nuget/packages/autofac/7.1.0/autofac.7.1.0.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/autofac.extras.dynamicproxy/7.1.0/autofac.extras.dynamicproxy.7.1.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/castle.core/5.1.1/castle.core.5.1.1.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/fluentvalidation/11.9.1/fluentvalidation.11.9.1.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
@@ -36,6 +38,7 @@
     "/Users/ahmetkarabudak/.nuget/packages/npgsql.entityframeworkcore.postgresql/7.0.11/npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/system.codedom/4.4.0/system.codedom.4.4.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/system.diagnostics.diagnosticsource/4.7.1/system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/system.diagnostics.eventlog/6.0.0/system.diagnostics.eventlog.6.0.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/system.identitymodel.tokens/5.0.0-rc1-211161024/system.identitymodel.tokens.5.0.0-rc1-211161024.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/system.identitymodel.tokens.jwt/7.4.0/system.identitymodel.tokens.jwt.7.4.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/system.text.encodings.web/7.0.0/system.text.encodings.web.7.0.0.nupkg.sha512",

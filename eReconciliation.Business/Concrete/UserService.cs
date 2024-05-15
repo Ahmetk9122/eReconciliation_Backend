@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using eReconciliation.Business.ValidationRules.FluentValidation;
+using eReconciliation.Core.Aspects.Autofac.Validation;
 using eReconciliation.Core.Entities.Concrete;
 using eReconciliation.DataAccess;
 using FluentValidation;
@@ -16,6 +17,8 @@ namespace eReconciliation.Business
         {
             _userDal = userDal;
         }
+
+        [ValidationAspect(typeof(UserValidator))]
         public void Add(User user)
         {
             _userDal.Add(user);
