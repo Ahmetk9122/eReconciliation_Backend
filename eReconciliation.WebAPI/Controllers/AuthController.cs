@@ -7,6 +7,7 @@ using eReconciliation.Entities.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using eReconciliation.Core.Extensions;
 using eReconciliation.Entities.Concrete;
+using Microsoft.AspNetCore.Identity;
 
 
 namespace eReconciliation.WebAPI.Controllers
@@ -16,8 +17,6 @@ namespace eReconciliation.WebAPI.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
-        private readonly ICompanyService _companyService;
-
         public AuthController(IAuthService authService)
         {
             _authService = authService;
@@ -45,20 +44,22 @@ namespace eReconciliation.WebAPI.Controllers
             }
             return BadRequest(registerResult.Message);
         }
+
         [HttpPost("registerSecondAccount")]
-        public IActionResult RegisterSecondAccount(UserForRegisterDto userForRegisterDto, int companyId)
+        public IActionResult RegisterSecondAccount(UserForRegistertoSecondAccountDto userForRegistertoSecondAccountDto)
         {
-            var userExist = _authService.UserExist(userForRegisterDto.Email);
+            var userExist = _authService.UserExist(userForRegistertoSecondAccountDto.Email);
             if (!userExist.Success)
             {
                 return BadRequest(userExist.Message);
             }
-            var registerResult = _authService.RegisterSecondAccount(userForRegisterDto.ConvertTo<UserForRegister>(), userForRegisterDto.Password);
-            var result = _authService.CreateAccessToken(registerResult.Data, companyId);
+            var registerResult = _authService.RegisterSecondAccount(userForRegistertoSecondAccountDto.ConvertTo<UserForRegister>(), userForRegistertoSecondAccountDto.Password, userForRegistertoSecondAccountDto.CompanyId);
+            var result = _authService.CreateAccessToken(registerResult.Data, userForRegistertoSecondAccountDto.CompanyId);
             if (result.Success)
             {
-                return Ok(registerResult);
+                return Ok(result.Data);
             }
+
             return BadRequest(registerResult.Message);
         }
 
@@ -70,11 +71,41 @@ namespace eReconciliation.WebAPI.Controllers
             {
                 return BadRequest(userForLogin.Message);
             }
-            var result = _authService.CreateAccessToken(userForLogin.Data, 0);
-            if (result.Success)
+
+            if (userForLogin.Data.IsActive)
             {
-                return Ok(result.Data);
+                var userCompany = _authService.GetCompany(userForLogin.Data.Id).Data;
+                var result = _authService.CreateAccessToken(userForLogin.Data, userCompany.CompanyId);
+                if (result.Success)
+                {
+                    return Ok(result.Data);
+                }
+                return BadRequest(result.Message);
+
             }
+            return BadRequest("Kullanıcı pasif durumda. Aktif etmek için yöneticinize danışın.");
+
+        }
+
+        [HttpGet("confirmUser")]
+        public IActionResult ConfirmUser(string value)
+        {
+            var user = _authService.GetByMailConfirmValue(value).Data;
+            user.MailConfirm = true;
+            user.MailConfirmDate = DateTime.Now;
+            var result = _authService.UpdateUser(user);
+            if (result.Success)
+                return Ok();
+            return BadRequest(result.Message);
+        }
+
+        [HttpGet("sendConfirmEmail")]
+        public IActionResult SendConfirmEmail(int userId)
+        {
+            var user = _authService.GetById(userId).Data;
+            var result = _authService.SendConfirmEmail(user);
+            if (result.Success)
+                return Ok(result);
             return BadRequest(result.Message);
         }
     }

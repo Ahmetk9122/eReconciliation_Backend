@@ -18,10 +18,14 @@ namespace eReconciliation.Business
         {
             _companyDal = companyDal;
         }
+        public IDataResult<UserCompany> GetCompany(int userId)
+        {
+            return new SuccessDataResult<UserCompany>(_companyDal.GetCompany(userId));
+        }
 
         public IResult Add(Company company)
         {
-            if (!((company.Name?.Length ?? 0) > 10)) throw new Exception("Şirket Adı En Az 10 Karakter olmalıdır.");
+            if (!((company.Name?.Length ?? 0) > 4)) throw new Exception("Şirket Adı En Az 10 Karakter olmalıdır.");
             _companyDal.Add(company);
             return new SuccessResult(Messages.AddedCompany);
         }
@@ -33,6 +37,7 @@ namespace eReconciliation.Business
                 return new ErrorResult(Messages.CompanyAlreadyExist);
             return new SuccessResult();
         }
+
 
         public IResult UserCompanyMapingAdd(int userId, int companyId)
         {

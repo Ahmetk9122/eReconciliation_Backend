@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "d+yQzg4WzHsmQyAEB5lSJ2ifk1lMyWBm3brAcvoE9vepFawyz0Oew96tT3dFE2ogX8TtLBbrKh6FaH5/5VSMCA==",
+  "dgSpecHash": "ApAo7mT5Z7rsle9jHDRC0WfNKSdX7nKK0IJHo+Hc9Ol4PN/d1V6fur/uSDL/smtk6ZbdhRT/D2K4ztG6XxN/ag==",
   "success": true,
   "projectFilePath": "/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.Business/eReconciliation.Business.csproj",
   "expectedPackageFiles": [
     "/Users/ahmetkarabudak/.nuget/packages/autofac/7.1.0/autofac.7.1.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/fluentvalidation/11.9.1/fluentvalidation.11.9.1.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/microsoft.entityframeworkcore/7.0.16/microsoft.entityframeworkcore.7.0.16.nupkg.sha512",

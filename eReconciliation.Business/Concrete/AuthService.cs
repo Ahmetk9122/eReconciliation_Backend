@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using System.Transactions;
 using eReconciliation.Business.Abstract;
 using eReconciliation.Business.Constans;
+using eReconciliation.Business.ValidationRules.FluentValidation;
 using eReconciliation.Core;
+using eReconciliation.Core.CrossCuttingConcerns.Validation;
 using eReconciliation.Core.Entities.Concrete;
 using eReconciliation.Core.Utilities;
 using eReconciliation.Core.Utilities.Results.Abstract;
@@ -14,6 +17,7 @@ using eReconciliation.Core.Utilities.Results.Concrete;
 using eReconciliation.Entities;
 using eReconciliation.Entities.Concrete;
 using eReconciliation.Entities.Dtos;
+using FluentValidation;
 
 namespace eReconciliation.Business.Concrete
 {
@@ -37,6 +41,14 @@ namespace eReconciliation.Business.Concrete
 
         }
 
+        public IDataResult<User> GetById(int id)
+        {
+            return new SuccessDataResult<User>(_userService.GetById(id));
+        }
+        public IDataResult<UserCompany> GetCompany(int userId)
+        {
+            return new SuccessDataResult<UserCompany>(_companyService.GetCompany(userId).Data);
+        }
 
         public IDataResult<AccessToken> CreateAccessToken(User user, int companyId)
         {
@@ -61,8 +73,10 @@ namespace eReconciliation.Business.Concrete
 
         }
 
+        // [AbstractValidator(typeof(UserValidator))]
         public IDataResult<UserCompanyDto> Register(UserForRegister userForRegister, string password, Company company)
         {
+
             using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
             {
                 #region [ Kullanıcı Kayıdı ]
@@ -80,6 +94,12 @@ namespace eReconciliation.Business.Concrete
                     PasswordSalt = passwordSalt,
                     Name = userForRegister.Name
                 };
+
+                #region [ Validation ]
+                ValidationTool.Validate(new UserValidator(), user);
+                ValidationTool.Validate(new CompanyValidator(), company);
+                #endregion
+
                 _userService.Add(user);
                 #endregion
 
@@ -112,56 +132,93 @@ namespace eReconciliation.Business.Concrete
 
                 #region [ Send Mail ]
 
-                string subject = "Kullanıcı Onay Maili";
-                string body = "Kullanıcınız sisteme kayıt oldu kaydınızı tamamlamak için aşağıdaki linke tıklayınız.";
-                string link = "https://localhost:7220";
-                string linkDescription = "Kaydı onaylamak için tıklayın";
-
-                var mailTemplate = _mailTemplateService.GetMailTemplateName("Kayıt", 4);
-                string templateBody = mailTemplate.Data.Value;
-                templateBody = templateBody.Replace("{{title}}", subject);
-                templateBody = templateBody.Replace("{{message}}", body);
-                templateBody = templateBody.Replace("{{link}}", link);
-                templateBody = templateBody.Replace("{{linkDescription}}", linkDescription);
-
-                var mailParameter = _mailParameterService.GetMailParameter(10);
-
-                var sendMail = new SendMailDto()
-                {
-                    MailParameter = mailParameter.Data,
-                    Email = user.Email,
-                    Subject = subject,
-                    Body = templateBody
-                };
-                _mailService.SendMail(sendMail);
+                SendConfirmEmail(user);
 
                 #endregion
                 scope.Complete();
 
-
-
                 return new SuccessDataResult<UserCompanyDto>(userCompanyDto, Messages.UserRegistered);
             }
         }
-
-        public IDataResult<User> RegisterSecondAccount(UserForRegister userForRegister, string password)
+        void SendConfirmEmail(User user)
         {
-            byte[] passwordHash, passwordSalt;
-            HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
-            var user = new User()
+            string subject = "Kullanıcı Onay Maili";
+            string body = "Kullanıcınız sisteme kayıt oldu kaydınızı tamamlamak için aşağıdaki linke tıklayınız.";
+            string link = "https://localhost:7129/api/v1/auths/confirmUser?value=" + user.MailConfirmValue;
+            string linkDescription = "Kaydı onaylamak için tıklayın";
+
+            var mailTemplate = _mailTemplateService.GetMailTemplateName("Kayıt", 1);
+            string templateBody = mailTemplate.Data.Value;
+            templateBody = templateBody.Replace("{{title}}", subject);
+            templateBody = templateBody.Replace("{{message}}", body);
+            templateBody = templateBody.Replace("{{link}}", link);
+            templateBody = templateBody.Replace("{{linkDescription}}", linkDescription);
+
+            var mailParameter = _mailParameterService.GetMailParameter(1);
+
+            var sendMail = new SendMailDto()
             {
-                Email = userForRegister.Email,
-                AddedAt = DateTime.Now,
-                IsActive = true,
-                MailConfirm = false,
-                MailConfirmDate = DateTime.Now,
-                MailConfirmValue = Guid.NewGuid().ToString(),
-                PasswordHash = passwordHash,
-                PasswordSalt = passwordSalt,
-                Name = userForRegister.Name
+                MailParameter = mailParameter.Data,
+                Email = user.Email,
+                Subject = subject,
+                Body = templateBody
             };
-            _userService.Add(user);
-            return new SuccessDataResult<User>(user, Messages.UserRegistered);
+            _mailService.SendMail(sendMail);
+
+            user.MailConfirmDate = DateTime.Now;
+            _userService.Update(user);
+        }
+
+        IResult IAuthService.SendConfirmEmail(User user)
+        {
+            if (user.MailConfirm == true)
+                return new ErrorResult(Messages.MailAlreadyConfirm);
+
+            DateTime confirmMailDate = user.MailConfirmDate;
+            DateTime now = DateTime.Now;
+            if (confirmMailDate.ToShortDateString() == now.ToShortDateString())
+            {
+                if (confirmMailDate.Hour == now.Hour && confirmMailDate.AddMinutes(5).Minute <= now.Minute)
+                {
+                    SendConfirmEmail(user);
+                    return new SuccessResult(Messages.MailConfirmSendSuccessful);
+                }
+                else
+                {
+                    return new ErrorResult(Messages.MailConfirmTimeHasNotExpired);
+
+                }
+            }
+
+            SendConfirmEmail(user);
+            return new SuccessResult(Messages.MailConfirmSendSuccessful);
+
+        }
+        public IDataResult<User> RegisterSecondAccount(UserForRegister userForRegister, string password, int companyId)
+        {
+            using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            {
+                byte[] passwordHash, passwordSalt;
+                HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+                var user = new User()
+                {
+                    Email = userForRegister.Email,
+                    AddedAt = DateTime.Now,
+                    IsActive = true,
+                    MailConfirm = false,
+                    MailConfirmDate = DateTime.Now,
+                    MailConfirmValue = Guid.NewGuid().ToString(),
+                    PasswordHash = passwordHash,
+                    PasswordSalt = passwordSalt,
+                    Name = userForRegister.Name
+                };
+                _userService.Add(user);
+                _companyService.UserCompanyMapingAdd(user.Id, companyId);
+                SendConfirmEmail(user);
+                scope.Complete();
+
+                return new SuccessDataResult<User>(user, Messages.UserRegistered);
+            }
         }
 
         public IResult UserExist(string email)
@@ -179,6 +236,18 @@ namespace eReconciliation.Business.Concrete
             }
             return new SuccessResult();
         }
+
+        public IDataResult<User> GetByMailConfirmValue(string value)
+        {
+            return new SuccessDataResult<User>(_userService.GetByMailConfirmValue(value));
+        }
+
+        public IResult UpdateUser(User user)
+        {
+            _userService.Update(user);
+            return new SuccessResult(Messages.UserMailConfirmSuccessful);
+        }
+
 
     }
 }

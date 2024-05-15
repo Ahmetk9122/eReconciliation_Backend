@@ -20,5 +20,10 @@ namespace eReconciliation.Business.Constans
         public static string MailTemplateAdded = "Mail şablonu kaydedildi.";
         public static string MailTemplateUpdated = "Mail şablonu güncellendi.";
         public static string MailTemplateDeleted = "Mail şablonu silindi.";
+        public static string UserMailConfirmSuccessful = "Mailiniz başarıyla onaylandı.";
+        public static string MailConfirmSendSuccessful = "Onay maili tekrardan gönderilmiştir.";
+        public static string MailAlreadyConfirm = "Mailiniz zaten onaylı. Tekrar gönderim yapılmadı.";
+        public static string MailConfirmTimeHasNotExpired = "Mail onayını 5 dk da bir gönderebilirsiniz.";
+
     }
 }
