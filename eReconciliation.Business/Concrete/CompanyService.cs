@@ -1,5 +1,6 @@
 using eReconciliation.Business.Constans;
 using eReconciliation.Business.ValidationRules.FluentValidation;
+using eReconciliation.Core.Aspects.Autofac.Transaction;
 using eReconciliation.Core.Aspects.Autofac.Validation;
 using eReconciliation.Core.Utilities.Results.Abstract;
 using eReconciliation.Core.Utilities.Results.Concrete;
@@ -24,12 +25,39 @@ namespace eReconciliation.Business
         {
             return new SuccessDataResult<UserCompany>(_companyDal.GetCompany(userId));
         }
+        public IDataResult<Company> GetCompanyById(int companyId)
+        {
+            var result = _companyDal.Get(x => x.Id == companyId);
+            if (result == null)
+                throw new Exception("Şirket bilgisine ulaşılamadı!");
+
+            return new SuccessDataResult<Company>(result);
+        }
+
 
         [ValidationAspect(typeof(CompanyValidator))]
         public IResult Add(Company company)
         {
             if (!((company.Name?.Length ?? 0) > 4)) throw new Exception("Şirket Adı En Az 10 Karakter olmalıdır.");
             _companyDal.Add(company);
+            return new SuccessResult(Messages.AddedCompany);
+        }
+
+        public IResult UpdateCompany(Company company)
+        {
+            GetCompanyById(company.Id);
+            _companyDal.Update(company);
+            return new SuccessResult(Messages.UpdatedCompany);
+
+        }
+
+        [ValidationAspect(typeof(CompanyValidator))]
+        [TransactionScopeAspect]
+        public IResult AddCompanyAndUserCompany(CompanyDto companyDto)
+        {
+            Add(companyDto.Company);
+            UserCompanyMapingAdd(companyDto.UserId, companyDto.Company.Id);
+
             return new SuccessResult(Messages.AddedCompany);
         }
 
@@ -56,9 +84,11 @@ namespace eReconciliation.Business
         /// Validation işlemlerini yaparak hata çıkmazsa veritabanıan yönlendermektir.
         /// </summary>
         /// <returns></returns>
-        IDataResult<List<Company>> ICompanyService.GetList()
+        public IDataResult<List<Company>> GetList()
         {
             return new SuccessDataResult<List<Company>>(_companyDal.GetList(), Messages.List);
         }
+
+
     }
 }

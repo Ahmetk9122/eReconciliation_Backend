@@ -8,6 +8,7 @@ namespace eReconciliation.Business.Constans
     public class Messages
     {
         public static string AddedCompany = "Şirket kaydı başarıyla kaydedildi.";
+        public static string UpdatedCompany = "Şirket güncellemesi başarıyla yapıldı.";
         public static string List = "Listeleme işlemi başarılı";
         public static string UserNotFound = "Kullanıcı bulunamadı";
         public static string PasswordError = "Parola Hatalı";
