@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "iJ4fSepfQJQySKRQyJljviCPKvIFnxcSRS3FL4N22hrDzQCL5kIHh5jElU1opjmSsreAEG9+owC3WY+rV86rfw==",
+  "dgSpecHash": "mzJV5RAXr8l2iF8kejTDsAKJIuWj4hmnMANSjGM7Xfl+thgiFfhu0YsB+qdsvdjiylsT0mOTLJ5eProxqs8Svg==",
   "success": true,
   "projectFilePath": "/Users/ahmetkarabudak/Gelistirmeler/Kisisel_Gelistirmeler/eReconciliation/Backend/eReconciliation.WebAPI/eReconciliation.WebAPI.csproj",
   "expectedPackageFiles": [
@@ -10,9 +10,11 @@
     "/Users/ahmetkarabudak/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/castle.core/5.1.1/castle.core.5.1.1.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/exceldatareader/3.7.0/exceldatareader.3.7.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/fluentvalidation/11.9.1/fluentvalidation.11.9.1.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/7.0.16/microsoft.aspnetcore.authentication.jwtbearer.7.0.16.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/microsoft.aspnetcore.http.features/6.0.0-preview.4.21253.5/microsoft.aspnetcore.http.features.6.0.0-preview.4.21253.5.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/microsoft.aspnetcore.openapi/7.0.14/microsoft.aspnetcore.openapi.7.0.14.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/microsoft.entityframeworkcore/7.0.16/microsoft.entityframeworkcore.7.0.16.nupkg.sha512",
@@ -53,6 +55,7 @@
     "/Users/ahmetkarabudak/.nuget/packages/system.diagnostics.eventlog/6.0.0/system.diagnostics.eventlog.6.0.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/system.identitymodel.tokens/5.0.0-rc1-211161024/system.identitymodel.tokens.5.0.0-rc1-211161024.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/system.identitymodel.tokens.jwt/7.4.0/system.identitymodel.tokens.jwt.7.4.0.nupkg.sha512",
+    "/Users/ahmetkarabudak/.nuget/packages/system.io.pipelines/6.0.0-preview.4.21253.7/system.io.pipelines.6.0.0-preview.4.21253.7.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/system.text.encodings.web/7.0.0/system.text.encodings.web.7.0.0.nupkg.sha512",
     "/Users/ahmetkarabudak/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512"
   ],

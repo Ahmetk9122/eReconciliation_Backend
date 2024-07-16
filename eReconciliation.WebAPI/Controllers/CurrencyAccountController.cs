@@ -33,6 +33,27 @@ namespace eReconciliation.WebAPI.Controllers
             var result = _currencyAccountService.AddCurrencyAccount(currencyAccountDto.ConvertTo<CurrencyAccount>());
             return result.Success ? Ok(result) : BadRequest(result.Message);
         }
+
+        [HttpPost("excel")]
+        public IActionResult AddFromExcelCurrencyAccount(IFormFile file, int companyId)
+        {
+            if (file.Length > 0)
+            {
+                var fileName = Guid.NewGuid().ToString() + ".xlsx";
+                var filePath = $"{Directory.GetCurrentDirectory()}/Content/{fileName}";
+
+                using (FileStream stream = System.IO.File.Create(filePath))
+                {
+                    file.CopyTo(stream);
+                    stream.Flush();
+                }
+
+                var result = _currencyAccountService.AddToExcelCurrencyAccount(filePath, companyId);
+                return result.Success ? Ok(result) : BadRequest(result.Message);
+            }
+            return BadRequest("Dosya seçimi yapmadınız.");
+
+        }
         [HttpPut]
         public IActionResult UpdateCurrencyAccount([FromBody] CurrencyAccountDto currencyAccountDto)
         {
