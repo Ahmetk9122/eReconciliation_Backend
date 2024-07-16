@@ -25,6 +25,9 @@ namespace eReconciliation.Business.Constans
         public static string MailConfirmSendSuccessful = "Onay maili tekrardan gönderilmiştir.";
         public static string MailAlreadyConfirm = "Mailiniz zaten onaylı. Tekrar gönderim yapılmadı.";
         public static string MailConfirmTimeHasNotExpired = "Mail onayını 5 dk da bir gönderebilirsiniz.";
+        public static string AddedCurrencyAccount = "Cari kaydı başarıyla eklendi.";
+        public static string UpdatedCurrencyAccount = "Cari kaydı başarıyla güncellendi.";
+        public static string DeletedCurrencyAccount = "Cari kaydı başarıyla silindi.";
 
     }
 }

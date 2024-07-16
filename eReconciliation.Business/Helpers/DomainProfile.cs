@@ -21,6 +21,8 @@ namespace eReconciliation.Business
             CreateMap<MailTemplate, MailTemplateDto>();
             CreateMap<MailTemplateDto, MailTemplate>();
 
+            CreateMap<CurrencyAccount, CurrencyAccountDto>();
+            CreateMap<CurrencyAccountDto, CurrencyAccount>();
         }
     }
 }
