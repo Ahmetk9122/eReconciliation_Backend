@@ -23,6 +23,9 @@ namespace eReconciliation.Business
 
             CreateMap<CurrencyAccount, CurrencyAccountDto>();
             CreateMap<CurrencyAccountDto, CurrencyAccount>();
+
+            CreateMap<AccountReconciliation, AccountReconciliationDto>();
+            CreateMap<AccountReconciliationDto, AccountReconciliation>();
         }
     }
 }

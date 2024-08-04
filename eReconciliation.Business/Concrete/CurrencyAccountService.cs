@@ -84,6 +84,11 @@ namespace eReconciliation.Business
 
         }
 
+        public IDataResult<CurrencyAccount> GetCurrencyAccountByCode(string code, int companyId)
+        {
+            return new SuccessDataResult<CurrencyAccount>(_currencyAccountDal.Get(x => x.CompanyId == companyId && x.Code == code));
+        }
+
         public IDataResult<CurrencyAccount> GetCurrencyAccountById(int id)
         {
             var result = _currencyAccountDal.Get(x => x.Id == id);
