@@ -48,21 +48,23 @@ namespace eReconciliation.Business
                     while (reader.Read())
                     {
                         string code = reader.GetString(0);
-                        string startingDate = reader.GetString(1);
-                        string endingDate = reader.GetString(2);
-                        string currencyId = reader.GetString(3);
-                        string currencyDebit = reader.GetString(4);
-                        string currencyCredit = reader.GetString(5);
 
-                        if (code != "Cari Kodu")
+
+                        if (code != "Cari Kodu" && code != null)
                         {
+                            DateTime startingDate = reader.GetDateTime(1);
+                            DateTime endingDate = reader.GetDateTime(2);
+                            double currencyId = reader.GetDouble(3);
+                            double currencyDebit = reader.GetDouble(4);
+                            double currencyCredit = reader.GetDouble(5);
 
                             int currencyAccountId = _currencyAccountService.GetCurrencyAccountByCode(code, companyId).Data.Id;
+
                             AccountReconciliation accountReconciliation = new AccountReconciliation()
                             {
                                 CurrencyAccountId = currencyAccountId,
-                                StartingDate = Convert.ToDateTime(startingDate),
-                                EndingDate = Convert.ToDateTime(endingDate),
+                                StartingDate = startingDate,
+                                EndingDate = endingDate,
                                 CurrencyId = Convert.ToInt16(currencyId),
                                 CurrencyDebit = Convert.ToDecimal(currencyDebit),
                                 CurrencyCredit = Convert.ToDecimal(currencyCredit),
@@ -73,7 +75,7 @@ namespace eReconciliation.Business
                     }
                 }
             }
-            return new SuccessResult(Messages.AddedCurrencyAccount);
+            return new SuccessResult(Messages.AddedAccountReconciliation);
         }
         public IResult Delete(AccountReconciliation accountReconciliation)
         {

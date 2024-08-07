@@ -26,6 +26,9 @@ namespace eReconciliation.Business
 
             CreateMap<AccountReconciliation, AccountReconciliationDto>();
             CreateMap<AccountReconciliationDto, AccountReconciliation>();
+
+            CreateMap<AccountReconciliationDetail, AccountReconciliationDetailDto>();
+            CreateMap<AccountReconciliationDetailDto, AccountReconciliationDetail>();
         }
     }
 }

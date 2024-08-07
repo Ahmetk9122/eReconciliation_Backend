@@ -31,6 +31,10 @@ namespace eReconciliation.Business.Constans
         public static string AddedAccountReconciliation = "Cari mutabakat kaydı başarıyla eklendi.";
         public static string DeleteAccountReconciliation = "Cari mutabakat kaydı başarıyla silindi.";
         public static string UpdateAccountReconciliation = "Cari mutabakat kaydı başarıyla güncellendi.";
+        public static string AddedAccountReconciliationDetail = "Cari mutabakat detay kaydı başarıyla eklendi.";
+        public static string DeleteAccountReconciliationDetail = "Cari mutabakat detay kaydı başarıyla silindi.";
+        public static string UpdateAccountReconciliationDetail = "Cari mutabakat detay kaydı başarıyla güncellendi.";
+
 
     }
 }
