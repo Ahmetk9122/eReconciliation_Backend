@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using eReconciliation.Business.Constans;
+using eReconciliation.Core.Aspects.Autofac.Transaction;
 using eReconciliation.Core.Utilities.Results.Abstract;
 using eReconciliation.Core.Utilities.Results.Concrete;
 using eReconciliation.DataAccess;
@@ -36,6 +37,7 @@ namespace eReconciliation.Business
             return new SuccessResult(Messages.AddedAccountReconciliationDetail);
         }
 
+        [TransactionScopeAspect]
         public IResult AddAccountReconciliationDetailToExcel(string filePath, int accountReconciliationId)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
@@ -70,6 +72,7 @@ namespace eReconciliation.Business
                     }
                 }
             }
+            File.Delete(filePath);
             return new SuccessResult(Messages.AddedAccountReconciliationDetail);
         }
 

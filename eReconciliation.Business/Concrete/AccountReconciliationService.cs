@@ -75,6 +75,7 @@ namespace eReconciliation.Business
                     }
                 }
             }
+            File.Delete(filePath);
             return new SuccessResult(Messages.AddedAccountReconciliation);
         }
         public IResult Delete(AccountReconciliation accountReconciliation)
