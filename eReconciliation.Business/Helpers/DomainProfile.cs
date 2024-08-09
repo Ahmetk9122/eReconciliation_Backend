@@ -32,6 +32,9 @@ namespace eReconciliation.Business
 
             CreateMap<BaBsReconciliation, BaBsReconciliationDto>();
             CreateMap<BaBsReconciliationDto, BaBsReconciliation>();
+
+            CreateMap<BaBsReconciliationDetail, BaBsReconciliationDetailDto>();
+            CreateMap<BaBsReconciliationDetailDto, BaBsReconciliationDetail>();
         }
     }
 }

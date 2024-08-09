@@ -37,6 +37,9 @@ namespace eReconciliation.Business.Constans
         public static string AddedbaBsReconciliation = "BaBs  kaydı başarıyla eklendi.";
         public static string DeletebaBsReconciliation = "BaBs kaydı başarıyla silindi.";
         public static string UpdatebaBsReconciliation = "BaBs kaydı başarıyla güncellendi.";
+        public static string AddedbaBsReconciliationDetail = "BaBs detay kaydı başarıyla eklendi.";
+        public static string DeletebaBsReconciliationDetail = "BaBs detay kaydı başarıyla silindi.";
+        public static string UpdatebaBsReconciliationDetail = "BaBs detay kaydı başarıyla güncellendi.";
 
 
     }
