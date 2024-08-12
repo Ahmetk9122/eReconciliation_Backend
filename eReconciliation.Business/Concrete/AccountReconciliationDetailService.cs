@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using eReconciliation.Business.Constans;
 using eReconciliation.Core.Aspects.Autofac.Transaction;
+using eReconciliation.Core.Aspects.Caching;
 using eReconciliation.Core.Utilities.Results.Abstract;
 using eReconciliation.Core.Utilities.Results.Concrete;
 using eReconciliation.DataAccess;
@@ -21,22 +22,26 @@ namespace eReconciliation.Business
             _accountReconciliationDetailDal = accountReconciliationDetailDal;
         }
 
+        [CacheAspect(60)]
         public IDataResult<AccountReconciliationDetail> AccountReconciliationDetailGetById(int accountReconciliationDetailId)
         {
             return new SuccessDataResult<AccountReconciliationDetail>(_accountReconciliationDetailDal.Get(x => x.Id == accountReconciliationDetailId));
         }
 
+        [CacheAspect(60)]
         public IDataResult<List<AccountReconciliationDetail>> AccountReconciliationDetailGetList(int accountReconciliationId)
         {
             return new SuccessDataResult<List<AccountReconciliationDetail>>(_accountReconciliationDetailDal.GetList(x => x.AccountReconciliationId == accountReconciliationId));
         }
 
+        [CacheRemoveAspect("IAccountReconciliationDetailService.Get")]
         public IResult AddAccountReconciliationDetail(AccountReconciliationDetail accountReconciliationDetail)
         {
             _accountReconciliationDetailDal.Add(accountReconciliationDetail);
             return new SuccessResult(Messages.AddedAccountReconciliationDetail);
         }
 
+        [CacheRemoveAspect("IAccountReconciliationDetailService.Get")]
         [TransactionScopeAspect]
         public IResult AddAccountReconciliationDetailToExcel(string filePath, int accountReconciliationId)
         {
@@ -76,12 +81,14 @@ namespace eReconciliation.Business
             return new SuccessResult(Messages.AddedAccountReconciliationDetail);
         }
 
+        [CacheRemoveAspect("IAccountReconciliationDetailService.Get")]
         public IResult DeleteAccountReconciliationDetail(AccountReconciliationDetail accountReconciliationDetail)
         {
             _accountReconciliationDetailDal.Delete(accountReconciliationDetail);
             return new SuccessResult(Messages.DeleteAccountReconciliationDetail);
         }
 
+        [CacheRemoveAspect("IAccountReconciliationDetailService.Get")]
         public IResult UpdateAccountReconciliationDetail(AccountReconciliationDetail accountReconciliationDetail)
         {
             _accountReconciliationDetailDal.Delete(accountReconciliationDetail);

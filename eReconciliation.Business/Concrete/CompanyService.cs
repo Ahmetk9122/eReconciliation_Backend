@@ -2,6 +2,7 @@ using eReconciliation.Business.Constans;
 using eReconciliation.Business.ValidationRules.FluentValidation;
 using eReconciliation.Core.Aspects.Autofac.Transaction;
 using eReconciliation.Core.Aspects.Autofac.Validation;
+using eReconciliation.Core.Aspects.Caching;
 using eReconciliation.Core.Utilities.Results.Abstract;
 using eReconciliation.Core.Utilities.Results.Concrete;
 using eReconciliation.DataAccess;
@@ -21,10 +22,12 @@ namespace eReconciliation.Business
         {
             _companyDal = companyDal;
         }
+        [CacheAspect(60)]
         public IDataResult<UserCompany> GetCompany(int userId)
         {
             return new SuccessDataResult<UserCompany>(_companyDal.GetCompany(userId));
         }
+        [CacheAspect(60)]
         public IDataResult<Company> GetCompanyById(int companyId)
         {
             var result = _companyDal.Get(x => x.Id == companyId);
@@ -34,7 +37,7 @@ namespace eReconciliation.Business
             return new SuccessDataResult<Company>(result);
         }
 
-
+        [CacheRemoveAspect("ICompanyService.Get")]
         [ValidationAspect(typeof(CompanyValidator))]
         public IResult Add(Company company)
         {
@@ -43,6 +46,7 @@ namespace eReconciliation.Business
             return new SuccessResult(Messages.AddedCompany);
         }
 
+        [CacheRemoveAspect("ICompanyService.Get")]
         public IResult UpdateCompany(Company company)
         {
             GetCompanyById(company.Id);
@@ -53,6 +57,7 @@ namespace eReconciliation.Business
 
         [ValidationAspect(typeof(CompanyValidator))]
         [TransactionScopeAspect]
+        [CacheRemoveAspect("ICompanyService.Get")]
         public IResult AddCompanyAndUserCompany(CompanyDto companyDto)
         {
             Add(companyDto.Company);
@@ -69,7 +74,7 @@ namespace eReconciliation.Business
             return new SuccessResult();
         }
 
-
+        [CacheRemoveAspect("ICompanyService.Get")]
         public IResult UserCompanyMapingAdd(int userId, int companyId)
         {
             _companyDal.UserCompanyMapingAdd(userId, companyId);
@@ -84,6 +89,7 @@ namespace eReconciliation.Business
         /// Validation işlemlerini yaparak hata çıkmazsa veritabanıan yönlendermektir.
         /// </summary>
         /// <returns></returns>
+        [CacheAspect(60)]
         public IDataResult<List<Company>> GetList()
         {
             return new SuccessDataResult<List<Company>>(_companyDal.GetList(), Messages.List);

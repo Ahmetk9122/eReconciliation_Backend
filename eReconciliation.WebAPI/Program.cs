@@ -9,6 +9,8 @@ using Microsoft.IdentityModel.Tokens;
 using eReconciliation.Core.Extensions;
 using AutoMapper;
 using eReconciliation.Business;
+using eReconciliation.Core.Utilities.IoC;
+using eReconciliation.Core.DependencyResolvers;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -53,6 +55,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
+builder.Services.AddDependencyResolvers(new ICoreModule[]
+{
+    new CoreModule(),
+});
 #endregion
 
 services.AddEndpointsApiExplorer();

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using eReconciliation.Business.Constans;
 using eReconciliation.Core.Aspects.Autofac.Transaction;
+using eReconciliation.Core.Aspects.Caching;
 using eReconciliation.Core.Utilities.Results.Abstract;
 using eReconciliation.Core.Utilities.Results.Concrete;
 using eReconciliation.DataAccess;
@@ -22,16 +23,20 @@ namespace eReconciliation.Business
             _baBsReconciliationDal = baBsReconciliationDal;
             _currencyAccountService = currencyAccountService;
         }
+        [CacheAspect(60)]
         public IDataResult<BaBsReconciliation> BaBsReconciliationGetById(int baBsReconciliationId)
         {
             return new SuccessDataResult<BaBsReconciliation>(_baBsReconciliationDal.Get(x => x.Id == baBsReconciliationId));
         }
 
+        [CacheAspect(60)]
         public IDataResult<List<BaBsReconciliation>> BaBsReconciliationGetList(int companyId)
         {
             return new SuccessDataResult<List<BaBsReconciliation>>(_baBsReconciliationDal.GetList(x => x.CompanyId == companyId));
         }
         [TransactionScopeAspect]
+
+        [CacheRemoveAspect("IBaBsReconciliationService.Get")]
         public IResult AddBaBsReconciliationToExcel(string filePath, int companyId)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
@@ -74,16 +79,22 @@ namespace eReconciliation.Business
             return new SuccessResult(Messages.AddedAccountReconciliation);
 
         }
+
+        [CacheRemoveAspect("IBaBsReconciliationService.Get")]
         public IResult AddBaBsReconciliation(BaBsReconciliation baBsReconciliation)
         {
             _baBsReconciliationDal.Add(baBsReconciliation);
             return new SuccessResult(Messages.AddedbaBsReconciliation);
         }
+
+        [CacheRemoveAspect("IBaBsReconciliationService.Get")]
         public IResult DeleteBaBsReconciliation(BaBsReconciliation baBsReconciliation)
         {
             _baBsReconciliationDal.Delete(baBsReconciliation);
             return new SuccessResult(Messages.DeletebaBsReconciliation);
         }
+
+        [CacheRemoveAspect("IBaBsReconciliationService.Get")]
         public IResult UpdateBaBsReconciliation(BaBsReconciliation baBsReconciliation)
         {
             _baBsReconciliationDal.Update(baBsReconciliation);
