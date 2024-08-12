@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using eReconciliation.Business.BusinessAspects;
 using eReconciliation.Business.Constans;
 using eReconciliation.Core.Aspects.Caching;
+using eReconciliation.Core.Aspects.Performance;
 using eReconciliation.Core.Utilities.Results.Abstract;
 using eReconciliation.Core.Utilities.Results.Concrete;
 using eReconciliation.DataAccess;
@@ -20,12 +22,15 @@ namespace eReconciliation.Business
             _mailParameterDal = mailParameterDal;
         }
 
+
         [CacheAspect(60)]
         public IDataResult<MailParameter> GetMailParameter(int companyId)
         {
             return new SuccessDataResult<MailParameter>(_mailParameterDal.Get(x => x.CompanyId == companyId));
         }
 
+        [PerformanceAspect(3)]
+        [SecuredOperation("MailParameter.Update,Admin")]
         [CacheRemoveAspect("IMailParameterService.Get")]
         public IResult UpdateMailParameter(MailParameter mailParameter)
         {

@@ -11,6 +11,7 @@ using AutoMapper;
 using eReconciliation.Business;
 using eReconciliation.Core.Utilities.IoC;
 using eReconciliation.Core.DependencyResolvers;
+using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -18,10 +19,6 @@ var services = builder.Services;
 #region [ AutoMapper ]
 services.AddAutoMapper(typeof(DomainProfile));
 #endregion
-
-// #region [ AutoMapper ]
-// builder.Services.AddAutoMapper(typeof(DomainProfile));
-// #endregion
 
 #region  [AUTOFAC]
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
@@ -63,6 +60,9 @@ builder.Services.AddDependencyResolvers(new ICoreModule[]
 
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
+
+//Bunu CoreModule içine taşı
+services.AddSingleton<Stopwatch>();
 
 var app = builder.Build();
 

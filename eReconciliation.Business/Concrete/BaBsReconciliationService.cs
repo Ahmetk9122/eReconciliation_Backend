@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using eReconciliation.Business.BusinessAspects;
 using eReconciliation.Business.Constans;
 using eReconciliation.Core.Aspects.Autofac.Transaction;
 using eReconciliation.Core.Aspects.Caching;
+using eReconciliation.Core.Aspects.Performance;
 using eReconciliation.Core.Utilities.Results.Abstract;
 using eReconciliation.Core.Utilities.Results.Concrete;
 using eReconciliation.DataAccess;
@@ -23,20 +25,26 @@ namespace eReconciliation.Business
             _baBsReconciliationDal = baBsReconciliationDal;
             _currencyAccountService = currencyAccountService;
         }
+        [PerformanceAspect(3)]
+        [SecuredOperation("BaBsReconciliation.Get,Admin")]
         [CacheAspect(60)]
         public IDataResult<BaBsReconciliation> BaBsReconciliationGetById(int baBsReconciliationId)
         {
             return new SuccessDataResult<BaBsReconciliation>(_baBsReconciliationDal.Get(x => x.Id == baBsReconciliationId));
         }
 
+        [PerformanceAspect(3)]
+        [SecuredOperation("BaBsReconciliation.GetList,Admin")]
         [CacheAspect(60)]
         public IDataResult<List<BaBsReconciliation>> BaBsReconciliationGetList(int companyId)
         {
             return new SuccessDataResult<List<BaBsReconciliation>>(_baBsReconciliationDal.GetList(x => x.CompanyId == companyId));
         }
-        [TransactionScopeAspect]
 
+        [PerformanceAspect(3)]
+        [SecuredOperation("BaBsReconciliation.Add,Admin")]
         [CacheRemoveAspect("IBaBsReconciliationService.Get")]
+        [TransactionScopeAspect]
         public IResult AddBaBsReconciliationToExcel(string filePath, int companyId)
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
@@ -80,6 +88,8 @@ namespace eReconciliation.Business
 
         }
 
+        [PerformanceAspect(3)]
+        [SecuredOperation("BaBsReconciliation.Add,Admin")]
         [CacheRemoveAspect("IBaBsReconciliationService.Get")]
         public IResult AddBaBsReconciliation(BaBsReconciliation baBsReconciliation)
         {
@@ -87,6 +97,8 @@ namespace eReconciliation.Business
             return new SuccessResult(Messages.AddedbaBsReconciliation);
         }
 
+        [PerformanceAspect(3)]
+        [SecuredOperation("BaBsReconciliation.Delete,Admin")]
         [CacheRemoveAspect("IBaBsReconciliationService.Get")]
         public IResult DeleteBaBsReconciliation(BaBsReconciliation baBsReconciliation)
         {
@@ -94,6 +106,8 @@ namespace eReconciliation.Business
             return new SuccessResult(Messages.DeletebaBsReconciliation);
         }
 
+        [PerformanceAspect(3)]
+        [SecuredOperation("BaBsReconciliation.Update,Admin")]
         [CacheRemoveAspect("IBaBsReconciliationService.Get")]
         public IResult UpdateBaBsReconciliation(BaBsReconciliation baBsReconciliation)
         {

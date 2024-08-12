@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using eReconciliation.Core.CrossCuttingConcerns.Caching;
@@ -18,6 +19,7 @@ namespace eReconciliation.Core.DependencyResolvers
             services.AddSingleton<ICacheManager, MemoryCacheManager>();
             //Rollere Aspect yaparak erişebilmek için eklendi.
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<Stopwatch>();
         }
     }
 }

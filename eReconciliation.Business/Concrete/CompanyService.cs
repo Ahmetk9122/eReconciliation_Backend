@@ -1,8 +1,10 @@
+using eReconciliation.Business.BusinessAspects;
 using eReconciliation.Business.Constans;
 using eReconciliation.Business.ValidationRules.FluentValidation;
 using eReconciliation.Core.Aspects.Autofac.Transaction;
 using eReconciliation.Core.Aspects.Autofac.Validation;
 using eReconciliation.Core.Aspects.Caching;
+using eReconciliation.Core.Aspects.Performance;
 using eReconciliation.Core.Utilities.Results.Abstract;
 using eReconciliation.Core.Utilities.Results.Concrete;
 using eReconciliation.DataAccess;
@@ -46,6 +48,8 @@ namespace eReconciliation.Business
             return new SuccessResult(Messages.AddedCompany);
         }
 
+        [PerformanceAspect(3)]
+        [SecuredOperation("Company.Update,Admin")]
         [CacheRemoveAspect("ICompanyService.Get")]
         public IResult UpdateCompany(Company company)
         {

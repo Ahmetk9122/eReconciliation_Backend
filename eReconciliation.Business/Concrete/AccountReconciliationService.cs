@@ -6,6 +6,7 @@ using eReconciliation.Business.BusinessAspects;
 using eReconciliation.Business.Constans;
 using eReconciliation.Core.Aspects.Autofac.Transaction;
 using eReconciliation.Core.Aspects.Caching;
+using eReconciliation.Core.Aspects.Performance;
 using eReconciliation.Core.Utilities.Results.Abstract;
 using eReconciliation.Core.Utilities.Results.Concrete;
 using eReconciliation.DataAccess;
@@ -24,18 +25,23 @@ namespace eReconciliation.Business
             _accountReconciliationDal = accountReconciliationDal;
             _currencyAccountService = currencyAccountService;
         }
+        [PerformanceAspect(3)]
+        [SecuredOperation("AccountReconciliation.Get,Admin")]
         [CacheAspect(60)]
         public IDataResult<AccountReconciliation> GetById(int accountReconciliationId)
         {
             return new SuccessDataResult<AccountReconciliation>(_accountReconciliationDal.Get(x => x.Id == accountReconciliationId));
         }
+        [PerformanceAspect(3)]
+        [SecuredOperation("AccountReconciliation.GetList,Admin")]
         [CacheAspect(60)]
         public IDataResult<List<AccountReconciliation>> GetList(int companyId)
         {
             return new SuccessDataResult<List<AccountReconciliation>>(_accountReconciliationDal.GetList(x => x.CompanyId == companyId));
         }
 
-        [SecuredOperation("AccountReconciliation.Add")]
+        [PerformanceAspect(3)]
+        [SecuredOperation("AccountReconciliation.Add,Admin")]
         [CacheRemoveAspect("IAccountReconciliationService.Get")]
         public IResult Add(AccountReconciliation accountReconciliation)
         {
@@ -43,6 +49,8 @@ namespace eReconciliation.Business
             return new SuccessResult(Messages.AddedAccountReconciliation);
         }
 
+        [PerformanceAspect(3)]
+        [SecuredOperation("AccountReconciliation.Add,Admin")]
         [CacheRemoveAspect("IAccountReconciliationService.Get")]
         [TransactionScopeAspect]
         public IResult AddAccountReconciliationToExcel(string filePath, int companyId)
@@ -87,6 +95,8 @@ namespace eReconciliation.Business
             return new SuccessResult(Messages.AddedAccountReconciliation);
         }
 
+        [PerformanceAspect(3)]
+        [SecuredOperation("AccountReconciliation.Delete,Admin")]
         [CacheRemoveAspect("IAccountReconciliationService.Get")]
         public IResult Delete(AccountReconciliation accountReconciliation)
         {
@@ -94,6 +104,8 @@ namespace eReconciliation.Business
             return new SuccessResult(Messages.DeleteAccountReconciliation);
         }
 
+        [PerformanceAspect(3)]
+        [SecuredOperation("AccountReconciliation.Update,Admin")]
         [CacheRemoveAspect("IAccountReconciliationService.Get")]
         public IResult Update(AccountReconciliation accountReconciliation)
         {

@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using eReconciliation.Business.BusinessAspects;
 using eReconciliation.Business.ValidationRules.FluentValidation;
 using eReconciliation.Core.Aspects.Autofac.Validation;
 using eReconciliation.Core.Aspects.Caching;
+using eReconciliation.Core.Aspects.Performance;
 using eReconciliation.Core.Entities.Concrete;
 using eReconciliation.DataAccess;
 using FluentValidation;
@@ -25,6 +27,9 @@ namespace eReconciliation.Business
         {
             _userDal.Add(user);
         }
+
+        [PerformanceAspect(3)]
+        [SecuredOperation("User.Update,Admin")]
         [CacheRemoveAspect("IUserService.Get")]
         public void Update(User user)
         {

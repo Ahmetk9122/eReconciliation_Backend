@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using eReconciliation.Business.Abstract;
+using eReconciliation.Business.BusinessAspects;
 using eReconciliation.Business.Constans;
 using eReconciliation.Core.Aspects.Caching;
+using eReconciliation.Core.Aspects.Performance;
 using eReconciliation.Core.Utilities.Results.Abstract;
 using eReconciliation.Core.Utilities.Results.Concrete;
 using eReconciliation.DataAccess.Abstract;
@@ -22,17 +24,21 @@ namespace eReconciliation.Business.Concrete
 
         }
 
+        [PerformanceAspect(3)]
         [CacheAspect(60)]
         public IDataResult<MailTemplate> GetMailTemplateById(int id)
         {
             return new SuccessDataResult<MailTemplate>(_mailTemplateDal.Get(x => x.Id == id));
         }
 
+        [PerformanceAspect(3)]
         [CacheAspect(60)]
         public IDataResult<List<MailTemplate>> GetMailTemplates(int companyId)
         {
             return new SuccessDataResult<List<MailTemplate>>(_mailTemplateDal.GetList(x => x.CompanyId == companyId));
         }
+
+        [PerformanceAspect(3)]
         [CacheAspect(60)]
         public IDataResult<MailTemplate> GetMailTemplateName(string name, int companyId)
         {
@@ -40,6 +46,7 @@ namespace eReconciliation.Business.Concrete
 
         }
 
+        [PerformanceAspect(3)]
         [CacheRemoveAspect("IMailTemplateService.Get")]
         public IResult AddMailTemplate(MailTemplate mailTemplate)
         {
@@ -47,6 +54,8 @@ namespace eReconciliation.Business.Concrete
             return new SuccessResult(Messages.MailTemplateAdded);
         }
 
+        [PerformanceAspect(3)]
+        [SecuredOperation("MailTemplate.Update,Admin")]
         [CacheRemoveAspect("IMailTemplateService.Get")]
         public IResult UpdateMailTemplate(MailTemplate mailTemplate)
         {
@@ -54,6 +63,8 @@ namespace eReconciliation.Business.Concrete
             return new SuccessResult(Messages.MailTemplateUpdated);
         }
 
+        [PerformanceAspect(3)]
+        [SecuredOperation("MailTemplate.Delete,Admin")]
         [CacheRemoveAspect("IMailTemplateService.Get")]
         public IResult DeleteMailTemplate(MailTemplate mailTemplate)
         {

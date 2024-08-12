@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using eReconciliation.Business.BusinessAspects;
 using eReconciliation.Business.Constans;
 using eReconciliation.Business.ValidationRules.FluentValidation;
 using eReconciliation.Core.Aspects.Autofac.Transaction;
 using eReconciliation.Core.Aspects.Autofac.Validation;
 using eReconciliation.Core.Aspects.Caching;
+using eReconciliation.Core.Aspects.Performance;
 using eReconciliation.Core.Utilities.Results.Abstract;
 using eReconciliation.Core.Utilities.Results.Concrete;
 using eReconciliation.DataAccess;
@@ -25,16 +27,20 @@ namespace eReconciliation.Business
             _currencyAccountDal = currencyAccountDal;
         }
 
-        [ValidationAspect(typeof(CurrencyAccountValidator))]
+        [PerformanceAspect(3)]
+        [SecuredOperation("CurrencyAccount.Add,Admin")]
         [CacheRemoveAspect("ICurrencyAccountService.Get")]
+        [ValidationAspect(typeof(CurrencyAccountValidator))]
         public IResult AddCurrencyAccount(CurrencyAccount currencyAccount)
         {
             _currencyAccountDal.Add(currencyAccount);
             return new SuccessResult(Messages.AddedCurrencyAccount);
         }
 
-        [ValidationAspect(typeof(CurrencyAccountValidator))]
+        [PerformanceAspect(3)]
+        [SecuredOperation("CurrencyAccount.Add,Admin")]
         [CacheRemoveAspect("ICurrencyAccountService.Get")]
+        [ValidationAspect(typeof(CurrencyAccountValidator))]
         [TransactionScopeAspect]
         public IResult AddToExcelCurrencyAccount(string filePath, int companyId)
         {
@@ -79,6 +85,8 @@ namespace eReconciliation.Business
             return new SuccessResult(Messages.AddedCurrencyAccount);
         }
 
+        [PerformanceAspect(3)]
+        [SecuredOperation("CurrencyAccount.Delete,Admin")]
         [CacheRemoveAspect("ICurrencyAccountService.Get")]
         public IResult DeleteCurrencyAccount(CurrencyAccount currencyAccount)
         {
@@ -88,12 +96,16 @@ namespace eReconciliation.Business
 
         }
 
+        [PerformanceAspect(3)]
+        [SecuredOperation("CurrencyAccount.Get,Admin")]
         [CacheAspect(60)]
         public IDataResult<CurrencyAccount> GetCurrencyAccountByCode(string code, int companyId)
         {
             return new SuccessDataResult<CurrencyAccount>(_currencyAccountDal.Get(x => x.CompanyId == companyId && x.Code == code));
         }
 
+        [PerformanceAspect(3)]
+        [SecuredOperation("CurrencyAccount.Get,Admin")]
         [CacheAspect(60)]
         public IDataResult<CurrencyAccount> GetCurrencyAccountById(int id)
         {
@@ -103,12 +115,16 @@ namespace eReconciliation.Business
             return new SuccessDataResult<CurrencyAccount>(result);
         }
 
+        [PerformanceAspect(3)]
+        [SecuredOperation("CurrencyAccount.Get,Admin")]
         [CacheAspect(60)]
         public IDataResult<List<CurrencyAccount>> GetCurrencyAccounts(int companyId)
         {
             return new SuccessDataResult<List<CurrencyAccount>>(_currencyAccountDal.GetList(x => x.CompanyId == companyId));
         }
 
+        [PerformanceAspect(3)]
+        [SecuredOperation("CurrencyAccount.Update,Admin")]
         [ValidationAspect(typeof(CurrencyAccountValidator))]
         [CacheRemoveAspect("ICurrencyAccountService.Get")]
         public IResult UpdateCurrencyAccount(CurrencyAccount currencyAccount)
