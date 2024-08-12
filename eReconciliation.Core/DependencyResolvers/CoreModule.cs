@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using eReconciliation.Core.CrossCuttingConcerns.Caching;
 using eReconciliation.Core.CrossCuttingConcerns.Caching.Microsoft;
 using eReconciliation.Core.Utilities.IoC;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace eReconciliation.Core.DependencyResolvers
@@ -15,6 +16,8 @@ namespace eReconciliation.Core.DependencyResolvers
         {
             services.AddMemoryCache();
             services.AddSingleton<ICacheManager, MemoryCacheManager>();
+            //Rollere Aspect yaparak erişebilmek için eklendi.
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
     }
 }

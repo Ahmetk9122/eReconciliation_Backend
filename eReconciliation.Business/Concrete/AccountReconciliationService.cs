@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using eReconciliation.Business.BusinessAspects;
 using eReconciliation.Business.Constans;
 using eReconciliation.Core.Aspects.Autofac.Transaction;
 using eReconciliation.Core.Aspects.Caching;
@@ -34,6 +35,7 @@ namespace eReconciliation.Business
             return new SuccessDataResult<List<AccountReconciliation>>(_accountReconciliationDal.GetList(x => x.CompanyId == companyId));
         }
 
+        [SecuredOperation("AccountReconciliation.Add")]
         [CacheRemoveAspect("IAccountReconciliationService.Get")]
         public IResult Add(AccountReconciliation accountReconciliation)
         {
