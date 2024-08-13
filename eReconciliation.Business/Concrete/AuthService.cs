@@ -30,10 +30,14 @@ namespace eReconciliation.Business.Concrete
         private readonly IMailParameterService _mailParameterService;
         private readonly IMailService _mailService;
         private readonly IMailTemplateService _mailTemplateService;
+        private readonly IUserOperationClaimService _userOperationClaimService;
+        private readonly IOperationClaimService _operationClaimService;
 
-        public AuthService(IUserService userService, ITokenHelper tokenHelper, ICompanyService companyService, IMailParameterService mailParameterService, IMailService mailService, IMailTemplateService mailTemplateService)
+        public AuthService(IUserService userService, ITokenHelper tokenHelper, ICompanyService companyService, IMailParameterService mailParameterService, IMailService mailService, IMailTemplateService mailTemplateService, IUserOperationClaimService userOperationClaimService, IOperationClaimService operationClaimService)
         {
             _mailTemplateService = mailTemplateService;
+            _userOperationClaimService = userOperationClaimService;
+            _operationClaimService = operationClaimService;
             _tokenHelper = tokenHelper;
             _companyService = companyService;
             _mailParameterService = mailParameterService;
@@ -93,7 +97,6 @@ namespace eReconciliation.Business.Concrete
                 PasswordSalt = passwordSalt,
                 Name = userForRegister.Name
             };
-
             // #region [ Validation ]
             // ValidationTool.Validate(new UserValidator(), user);
             // ValidationTool.Validate(new CompanyValidator(), company);

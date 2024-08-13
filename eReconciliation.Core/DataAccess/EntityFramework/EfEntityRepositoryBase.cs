@@ -70,6 +70,13 @@ namespace eReconciliation.Core.DataAccess.EntityFramework
                 return await resultContext.SingleOrDefaultAsync(filter);
             }
         }
-
+        public IQueryable<TEntity> GetQuery(Expression<Func<TEntity, bool>> predicate)
+        {
+            using (var context = new TContext())
+            {
+                var resultContext = context.Set<TEntity>();
+                return predicate == null ? resultContext : resultContext.Where(predicate);
+            }
+        }
     }
 }

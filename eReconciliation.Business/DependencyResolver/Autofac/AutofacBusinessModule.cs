@@ -55,13 +55,18 @@ namespace eReconciliation.Business.DependencyResolver.Autofac
             builder.RegisterType<MailTemplateService>().As<IMailTemplateService>();
             builder.RegisterType<EFMailTemplateDal>().As<IMailTemplateDal>();
 
+            builder.RegisterType<OperationClaimService>().As<IOperationClaimService>();
+            builder.RegisterType<EfOperationClaimDal>().As<IOperationClaimDal>();
+
+            builder.RegisterType<UserOperationClaimService>().As<IUserOperationClaimService>();
+            builder.RegisterType<EfUserOperationClaim>().As<IUserOperationClaimDal>();
+
+
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces().EnableInterfaceInterceptors(new ProxyGenerationOptions()
             {
                 Selector = new AspectInterceptorSelector()
             }).SingleInstance();
-
-
 
         }
     }

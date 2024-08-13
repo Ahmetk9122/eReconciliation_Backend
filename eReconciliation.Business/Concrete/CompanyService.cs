@@ -24,7 +24,6 @@ namespace eReconciliation.Business
         {
             _companyDal = companyDal;
         }
-        [CacheAspect(60)]
         public IDataResult<UserCompany> GetCompany(int userId)
         {
             return new SuccessDataResult<UserCompany>(_companyDal.GetCompany(userId));

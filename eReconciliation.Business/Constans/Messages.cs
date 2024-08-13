@@ -40,6 +40,12 @@ namespace eReconciliation.Business.Constans
         public static string AddedbaBsReconciliationDetail = "BaBs detay kaydı başarıyla eklendi.";
         public static string DeletebaBsReconciliationDetail = "BaBs detay kaydı başarıyla silindi.";
         public static string UpdatebaBsReconciliationDetail = "BaBs detay kaydı başarıyla güncellendi.";
+        public static string AddedOperationClaim = "Yetki kaydı başarıyla eklendi.";
+        public static string DeleteOperationClaim = "Yetki kaydı başarıyla silindi.";
+        public static string UpdateOperationClaim = "Yetki kaydı başarıyla güncellendi.";
+        public static string AddedUserOperationClaim = "Kullanıcı yetki kaydı başarıyla eklendi.";
+        public static string DeleteUserOperationClaim = "Kullanıcı yetki kaydı başarıyla silindi.";
+        public static string UpdateUserOperationClaim = "Kullanıcı yetki kaydı başarıyla güncellendi.";
 
 
     }

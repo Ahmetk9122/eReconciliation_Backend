@@ -8,5 +8,6 @@ namespace eReconciliation.Core.Entities.Concrete
         public string Description { get; set; }
         public DateTime AddedAt { get; set; }
         public bool IsActive { get; set; }
+
     }
 }

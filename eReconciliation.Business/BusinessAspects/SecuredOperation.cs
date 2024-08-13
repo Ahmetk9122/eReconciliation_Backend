@@ -32,8 +32,8 @@ namespace eReconciliation.Business.BusinessAspects
                 {
                     return;
                 }
-                throw new Exception("İşlem yapmaya yetkiniz yoktur.");
             }
+            throw new Exception("İşlem yapmaya yetkiniz yoktur.");
         }
     }
 }

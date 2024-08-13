@@ -9,6 +9,9 @@ namespace eReconciliation.Business
     {
         public DomainProfile()
         {
+            CreateMap<Company, CompanyDto>();
+            CreateMap<CompanyDto, Company>();
+
             CreateMap<MailParameter, MailParameterDto>();
             CreateMap<MailParameterDto, MailParameter>();
 
@@ -35,6 +38,9 @@ namespace eReconciliation.Business
 
             CreateMap<BaBsReconciliationDetail, BaBsReconciliationDetailDto>();
             CreateMap<BaBsReconciliationDetailDto, BaBsReconciliationDetail>();
+
+            CreateMap<UserOperationClaim, UserOperationClaimDto>();
+            CreateMap<UserOperationClaimDto, UserOperationClaim>();
         }
     }
 }
