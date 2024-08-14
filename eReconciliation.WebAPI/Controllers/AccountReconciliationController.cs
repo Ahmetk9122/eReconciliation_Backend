@@ -22,6 +22,13 @@ namespace eReconciliation.WebAPI.Controllers
             var result = _accountReconciliationService.GetById(id);
             return result.Success ? Ok(result) : BadRequest(result.Message);
         }
+        [HttpGet("codes/{code}")]
+        public IActionResult GetByIdAccountReconciliation(string code)
+        {
+            var result = _accountReconciliationService.GetByCode(code);
+            return result.Success ? Ok(result) : BadRequest(result.Message);
+        }
+
         [HttpGet("company/{companyId}")]
         public IActionResult GetListdAccountReconciliation(int companyId)
         {
@@ -54,6 +61,12 @@ namespace eReconciliation.WebAPI.Controllers
             }
             return BadRequest("Dosya seçimi yapmadınız.");
         }
+        [HttpPost("send-mail")]
+        public async Task<IActionResult> SendReconciliationMail(int id)
+        {
+            var result = await _accountReconciliationService.SendReconciliationMail(id);
+            return result.Success ? Ok(result) : BadRequest(result.Message);
+        }
 
         [HttpPut]
         public IActionResult UpdateAccountReconciliation(AccountReconciliationDto accountReconciliationDto)
@@ -67,5 +80,6 @@ namespace eReconciliation.WebAPI.Controllers
             var result = _accountReconciliationService.Delete(accountReconciliationDto.ConvertTo<AccountReconciliation>());
             return result.Success ? Ok(result) : BadRequest(result.Message);
         }
+
     }
 }
