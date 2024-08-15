@@ -11,5 +11,7 @@ namespace eReconciliation.Business
         IResult DeleteBaBsReconciliation(BaBsReconciliation baBsReconciliation);
         IDataResult<BaBsReconciliation> BaBsReconciliationGetById(int baBsReconciliationId);
         IDataResult<List<BaBsReconciliation>> BaBsReconciliationGetList(int companyId);
+        IDataResult<BaBsReconciliation> GetByCode(string baBsReconciliationCode);
+        Task<IResult> SendBaBsReconciliationMail(int baBsReconciliation);
     }
 }

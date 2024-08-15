@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using eReconciliation.Business.Abstract;
 using eReconciliation.Business.BusinessAspects;
 using eReconciliation.Business.Constans;
 using eReconciliation.Core.Aspects.Autofac.Transaction;
@@ -12,6 +13,7 @@ using eReconciliation.Core.Utilities.Results.Concrete;
 using eReconciliation.DataAccess;
 using eReconciliation.Entities.Concrete;
 using ExcelDataReader;
+using Microsoft.EntityFrameworkCore;
 
 namespace eReconciliation.Business
 {
@@ -19,9 +21,17 @@ namespace eReconciliation.Business
     {
         private readonly IBaBsReconciliationDal _baBsReconciliationDal;
         private readonly ICurrencyAccountService _currencyAccountService;
+        private readonly IMailService _mailService;
+        private readonly IMailTemplateService _mailTemplateService;
+        private readonly IMailParameterService _mailParameterService;
 
-        public BaBsReconciliationService(IBaBsReconciliationDal baBsReconciliationDal, ICurrencyAccountService currencyAccountService)
+
+
+        public BaBsReconciliationService(IBaBsReconciliationDal baBsReconciliationDal, ICurrencyAccountService currencyAccountService, IMailService mailService, IMailTemplateService mailTemplateService, IMailParameterService mailParameterService)
         {
+            _mailService = mailService;
+            _mailTemplateService = mailTemplateService;
+            _mailParameterService = mailParameterService;
             _baBsReconciliationDal = baBsReconciliationDal;
             _currencyAccountService = currencyAccountService;
         }
@@ -77,6 +87,7 @@ namespace eReconciliation.Business
                                 Year = Convert.ToInt16(year),
                                 Quantity = Convert.ToInt16(quantity),
                                 Total = Convert.ToInt16(total),
+                                Guid = Guid.NewGuid().ToString()
                             };
                             _baBsReconciliationDal.Add(baBsReconciliation);
                         }
@@ -93,6 +104,7 @@ namespace eReconciliation.Business
         [CacheRemoveAspect("IBaBsReconciliationService.Get")]
         public IResult AddBaBsReconciliation(BaBsReconciliation baBsReconciliation)
         {
+            baBsReconciliation.Guid = Guid.NewGuid().ToString();
             _baBsReconciliationDal.Add(baBsReconciliation);
             return new SuccessResult(Messages.AddedbaBsReconciliation);
         }
@@ -113,6 +125,53 @@ namespace eReconciliation.Business
         {
             _baBsReconciliationDal.Update(baBsReconciliation);
             return new SuccessResult(Messages.UpdatebaBsReconciliation);
+        }
+        [PerformanceAspect(3)]
+        public IDataResult<BaBsReconciliation> GetByCode(string baBsReconciliationCode)
+        {
+            return new SuccessDataResult<BaBsReconciliation>(_baBsReconciliationDal.Get(x => x.Guid == baBsReconciliationCode));
+        }
+        [PerformanceAspect(3)]
+        [SecuredOperation("BaBsReconciliation.SendMail,Admin")]
+        public async Task<IResult> SendBaBsReconciliationMail(int baBsReconciliationId)
+        {
+            var existBaBsReconciliation = (await _baBsReconciliationDal.GetQuery(x => x.Id == baBsReconciliationId))
+               .Include(x => x.Company)
+               .Include(x => x.CurrencyAccount)
+               .SingleOrDefault() ?? throw new Exception("Babs bilgisine ulaşılamadı");
+
+            string subject = "Mutabakat Maili";
+            string body = "Şirket Adımız: " + existBaBsReconciliation.Company.Name + " <br /> " +
+               "Şirket Vergi Dairesi: " + existBaBsReconciliation.Company.TaxDepartment + " <br />" +
+               "Şirket Vergi Numarası: " + existBaBsReconciliation.Company.TaxIdNumber + " - " + existBaBsReconciliation.Company.IdentityNumber + " <br /><hr>" +
+               "Sizin Şirket: " + existBaBsReconciliation.CurrencyAccount.Name + "<br />" +
+               "Sizin Şirket Vergi Dairesi: " + existBaBsReconciliation.CurrencyAccount.TaxDepartment + " <br />" +
+               "Sizin Şirket Vergi Numarası: " + existBaBsReconciliation.CurrencyAccount.TaxIdNumber + " - " + existBaBsReconciliation.CurrencyAccount.IdentityNumber + " <br /><hr>" +
+               "Ay / Yıl: " + existBaBsReconciliation.Mounth + " / " + existBaBsReconciliation.Year + "<br />" +
+               "Adet: " + existBaBsReconciliation.Quantity + "<br />" +
+               "Tutar: " + existBaBsReconciliation.Total + " TL <br />";
+            string link = "https://localhost:7129/api/baBs-reconciliations/codes/" + existBaBsReconciliation.Guid;
+            string linkDescription = "Mutabakatı Cevaplamak için Tıklayın";
+
+            var mailTemplate = _mailTemplateService.GetMailTemplateName("Kayıt", 1);
+            string templateBody = mailTemplate.Data.Value;
+            templateBody = templateBody.Replace("{{title}}", subject);
+            templateBody = templateBody.Replace("{{message}}", body);
+            templateBody = templateBody.Replace("{{link}}", link);
+            templateBody = templateBody.Replace("{{linkDescription}}", linkDescription);
+
+            var mailParameter = _mailParameterService.GetMailParameter(1);
+
+            Entities.Dtos.SendMailDto sendMail = new Entities.Dtos.SendMailDto()
+            {
+                MailParameter = mailParameter.Data,
+                Email = existBaBsReconciliation.CurrencyAccount.Email,
+                Subject = subject,
+                Body = templateBody
+            };
+            _mailService.SendMail(sendMail);
+
+            return new SuccessResult(Messages.MailSendSuccessful);
         }
     }
 }

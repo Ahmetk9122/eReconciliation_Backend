@@ -63,15 +63,12 @@ namespace eReconciliation.Business
         [TransactionScopeAspect]
         public async Task<IResult> SendReconciliationMail(int accountReconciliationId)
         {
-            var existAccountReconciliation = new AccountReconciliation();
-            using (var context = new Context())
-            {
-                existAccountReconciliation = context.AccountReconciliations.Where(x => x.Id == accountReconciliationId)
-                .Include(x => x.Company)
-                .Include(x => x.CurrencyAccount)
-                .Include(x => x.Currency)
-                .SingleOrDefault();
-            }
+
+            var existAccountReconciliation = (await _accountReconciliationDal.GetQuery(x => x.Id == accountReconciliationId))
+               .Include(x => x.Company)
+               .Include(x => x.CurrencyAccount)
+               .Include(x => x.Currency)
+               .SingleOrDefault() ?? throw new Exception("Account Reconciliation bilgisine ulaşılamadı");
 
             string subject = "Mutabakat Maili";
             string body = "Şirket Adımız: " + existAccountReconciliation.Company.Name + " <br /> " +

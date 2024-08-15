@@ -32,6 +32,18 @@ namespace eReconciliation.WebAPI.Controllers
             var result = _baBsReconciliationService.BaBsReconciliationGetList(companyId);
             return result.Success ? Ok(result) : BadRequest(result.Message);
         }
+        [HttpGet("codes/{code}")]
+        public IActionResult BaBsReconciliationGetByCode(string code)
+        {
+            var result = _baBsReconciliationService.GetByCode(code);
+            return result.Success ? Ok(result) : BadRequest(result.Message);
+        }
+        [HttpPost("send-mail")]
+        public async Task<IActionResult> SendBaBsReconciliationMail(int id)
+        {
+            var result = await _baBsReconciliationService.SendBaBsReconciliationMail(id);
+            return result.Success ? Ok(result) : BadRequest(result.Message);
+        }
         [HttpPost]
         public IActionResult AddBaBsReconciliation(BaBsReconciliationDto baBsReconciliationDto)
         {

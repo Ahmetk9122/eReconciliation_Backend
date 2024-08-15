@@ -71,14 +71,12 @@ namespace eReconciliation.Core.DataAccess.EntityFramework
             }
         }
 
-
         public Task<IQueryable<TEntity>> GetQuery(Expression<Func<TEntity, bool>> predicate)
         {
-            using (var context = new TContext())
-            {
-                var resultContext = context.Set<TEntity>();
-                return predicate == null ? Task.Run(() => { return resultContext.AsQueryable(); }) : Task.Run(() => { return resultContext.Where(predicate); });
-            }
+
+            var context = new TContext();
+            var resultContext = context.Set<TEntity>();
+            return predicate == null ? Task.Run(() => { return resultContext.AsQueryable(); }) : Task.Run(() => { return resultContext.Where(predicate); });
         }
     }
 }
